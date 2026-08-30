@@ -88,18 +88,18 @@
     .legend{margin:10px 12px 0}
     .flow{margin:6px 12px 0}
     .wrap{padding:0 8px;max-height:calc(100vh - 40px);-webkit-overflow-scrolling:touch}
-    table{min-width:1200px}
+    table{min-width:1100px}
     .tmtable{min-width:0}  /* 信息表随屏宽，不触发页面级横向滚动 */
     th,td{padding:6px 7px}
-    thead th{min-width:70px;font-size:10px;padding:6px 3px;word-break:break-word;overflow-wrap:anywhere}
-    thead th:first-child{min-width:110px;max-width:130px}
-    tbody th{min-width:110px;max-width:130px;z-index:4;word-break:break-word;overflow-wrap:anywhere}
+    thead th{min-width:64px;font-size:10px;padding:6px 3px;word-break:break-word;overflow-wrap:anywhere}
+    thead th:first-child{min-width:96px;max-width:110px}
+    tbody th{min-width:96px;max-width:110px;z-index:4;word-break:break-word;overflow-wrap:anywhere}
     .person-role{display:none}
     .stage-date{font-size:11px}
     .stage-name{font-size:11px}
     .stage-src{margin-top:2px}
     .stage-meta{font-size:10.5px}
-    .tag{font-size:10px;padding:2px 6px}  /* 触控目标加大 */
+    .tag{font-size:10px;padding:2px 6px;white-space:normal}  /* 触控目标加大；允许换行，防止长标签撑宽布局视口触发整页缩小 */
     td ul{padding-left:12px}
     td li{margin-bottom:3px;font-size:12px}
     .evbtn{font-size:10px;padding:1px 6px;margin-left:2px}
