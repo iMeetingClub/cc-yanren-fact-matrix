@@ -44,7 +44,7 @@
   .resp{color:#ffb4ae}
   .who{color:var(--accent)}
   /* 矩阵 */
-  .wrap{overflow:auto;margin:18px 0 30px;padding:0 32px}
+  .wrap{overflow:auto;margin:18px 0 30px;padding:0 32px;max-height:calc(100vh - 60px)}
   table{border-collapse:separate;border-spacing:0;min-width:2000px;width:100%}
   th,td{border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top;padding:9px 10px;background:var(--panel)}
   /* 冻结首行 + 首列：thead th 顶部固定；tbody th 左侧固定；左上角 th 同时顶部+左侧固定 */
@@ -86,7 +86,7 @@
     h2{font-size:15px}
     .box{margin:12px 12px;padding:12px 14px}
     .flow{margin:6px 12px 0}
-    .wrap{padding:0 8px}
+    .wrap{padding:0 8px;max-height:calc(100vh - 40px)}
     table{min-width:1200px}
     th,td{padding:6px 7px}
     thead th{min-width:70px;font-size:10px;padding:6px 3px;word-break:break-word;overflow-wrap:anywhere}
