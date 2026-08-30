@@ -1,0 +1,209 @@
+[
+  {
+    "name": "S6-3_5-17版",
+    "votes": [
+      {
+        "id": "0x07c1a872c09f903050c21cc8f826503471548cf0cbdefcb9648c1808ca96b256",
+        "voter": "0x0cAd61916d2E15E6b71eB9f9489802Fda12Ae4A3",
+        "choice": 2,
+        "vp": 41791.01,
+        "vp_by_strategy": [
+          41790.01,
+          1
+        ],
+        "created": 1779037583
+      },
+      {
+        "id": "0x90689a6009033ae5fbd5a397d9b9b8e0827ecc9588055369aeb2329e09e811d2",
+        "voter": "0x4640e76cfB16F769D7d08F883c32924060B51c2C",
+        "choice": 1,
+        "vp": 6955.9,
+        "vp_by_strategy": [
+          6954.9,
+          1
+        ],
+        "created": 1778979809
+      },
+      {
+        "id": "0x7e1ff4fb58bc4fe23c33cfb87d867323acfe0a9207a24ab4cfce3b6712904c90",
+        "voter": "0x7DbeAd5AcD235676e38725BF516cD9494E44A4EC",
+        "choice": 2,
+        "vp": 583,
+        "vp_by_strategy": [
+          583,
+          0
+        ],
+        "created": 1779112109
+      }
+    ]
+  },
+  {
+    "name": "S6-3_5-22版",
+    "votes": [
+      {
+        "id": "0x2056e6215cfbebaac068e5941d72659c921a88107f35e29b85a8d09ff84fb9ae",
+        "voter": "0x4640e76cfB16F769D7d08F883c32924060B51c2C",
+        "choice": 1,
+        "vp": 6939.9,
+        "vp_by_strategy": [
+          6938.9,
+          1
+        ],
+        "created": 1779414638
+      },
+      {
+        "id": "0xfa959405b69c607ccb36828209443fea2ee3740310d3cb48882318c6f399c82c",
+        "voter": "0x17f03E3B80E17859ed46F350b0BBD8d6eE0fe4C6",
+        "choice": 1,
+        "vp": 1573.26,
+        "vp_by_strategy": [
+          1573.26,
+          0
+        ],
+        "created": 1779456308
+      },
+      {
+        "id": "0xf5bc01095080884face64103153ad1eb908e6bbb504cbd3b5bcb0e77f6ff4857",
+        "voter": "0xa4305896116054482D7A367a91bFeCa1d50DBd85",
+        "choice": 1,
+        "vp": 770,
+        "vp_by_strategy": [
+          770,
+          0
+        ],
+        "created": 1779458988
+      },
+      {
+        "id": "0xa531cd2e20cefebaf6b89e87b1158e5382e6ae7ccca87e221de32dcf706ccb2d",
+        "voter": "0x7DbeAd5AcD235676e38725BF516cD9494E44A4EC",
+        "choice": 2,
+        "vp": 683,
+        "vp_by_strategy": [
+          683,
+          0
+        ],
+        "created": 1779598992
+      }
+    ]
+  },
+  {
+    "name": "S6-7_6-19",
+    "votes": [
+      {
+        "id": "0x343294d0b5018e03c3d82d42340d4442ebb50a5f02c3517de43deb4b9b3e112e",
+        "voter": "0x0cAd61916d2E15E6b71eB9f9489802Fda12Ae4A3",
+        "choice": 1,
+        "vp": 54291.01,
+        "vp_by_strategy": [
+          54290.01,
+          1
+        ],
+        "created": 1781857498
+      },
+      {
+        "id": "0x06942707a835aa3d9d26cfec63f0852d103fbd11801d4d69cd437a4211005bcc",
+        "voter": "0x4640e76cfB16F769D7d08F883c32924060B51c2C",
+        "choice": 1,
+        "vp": 4884.12,
+        "vp_by_strategy": [
+          4883.12,
+          1
+        ],
+        "created": 1781853758
+      },
+      {
+        "id": "0xbdfdbff8eebd4bbf60f809de5b87d4babe53d21db4f63d3ace5cda2bc29be77a",
+        "voter": "0x17f03E3B80E17859ed46F350b0BBD8d6eE0fe4C6",
+        "choice": 1,
+        "vp": 1573.26,
+        "vp_by_strategy": [
+          1573.26,
+          0
+        ],
+        "created": 1781865631
+      },
+      {
+        "id": "0x8a98532a479bf078f0a39664eeee9a0555a6fd8b371200eeec718b5cfb28c2a1",
+        "voter": "0x7DbeAd5AcD235676e38725BF516cD9494E44A4EC",
+        "choice": 1,
+        "vp": 683,
+        "vp_by_strategy": [
+          683,
+          0
+        ],
+        "created": 1781864987
+      },
+      {
+        "id": "0x80e2314ef47a17492e83f3c769a94f230417139ae5a6c39737f5c5ea3f1a0bed",
+        "voter": "0x896A37eD9a6cD0a7C58d7F36d744fDb09BdD2866",
+        "choice": 1,
+        "vp": 10,
+        "vp_by_strategy": [
+          10,
+          0
+        ],
+        "created": 1781867380
+      },
+      {
+        "id": "0x618283d192fda88ff475b246849cca967e1b04d049b1a48d1d55e649b70fb055",
+        "voter": "0x5e43536Ca73b54569555925B88c05Ca6C5E7bA0d",
+        "choice": 1,
+        "vp": 1,
+        "vp_by_strategy": [
+          1,
+          0
+        ],
+        "created": 1781867005
+      }
+    ]
+  },
+  {
+    "name": "S7-1_8-10",
+    "votes": [
+      {
+        "id": "0x7b1b5188dc36e236d931648c20840705aa3f409e904440233f4e58817a2bc7e5",
+        "voter": "0x0cAd61916d2E15E6b71eB9f9489802Fda12Ae4A3",
+        "choice": 1,
+        "vp": 54291.01,
+        "vp_by_strategy": [
+          54290.01,
+          1
+        ],
+        "created": 1786537082
+      },
+      {
+        "id": "0x823253bc4e88589854939717dbc2d06a57a8f329bfc0613264a02aead02c680b",
+        "voter": "0x4640e76cfB16F769D7d08F883c32924060B51c2C",
+        "choice": 1,
+        "vp": 3297.12,
+        "vp_by_strategy": [
+          3296.12,
+          1
+        ],
+        "created": 1786432126
+      },
+      {
+        "id": "0x14439145a4250f1cde8f90764492e844c9f9fff7011ad2cd05bcf56496c0f5cd",
+        "voter": "0x7DbeAd5AcD235676e38725BF516cD9494E44A4EC",
+        "choice": 1,
+        "vp": 683,
+        "vp_by_strategy": [
+          683,
+          0
+        ],
+        "created": 1786545062
+      },
+      {
+        "id": "0xae70cd0a5b4ae1bbebb1ad912ab31a2f3953137895398ee42fbe83c4ad5489b2",
+        "voter": "0x5e43536Ca73b54569555925B88c05Ca6C5E7bA0d",
+        "choice": 1,
+        "vp": 1,
+        "vp_by_strategy": [
+          1,
+          0
+        ],
+        "created": 1786549823
+      }
+    ]
+  }
+]
