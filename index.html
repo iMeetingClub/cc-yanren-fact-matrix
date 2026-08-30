@@ -65,6 +65,18 @@
   footer table{min-width:0;font-size:12px}
   footer th,footer td{padding:5px 8px}
   mark{background:#6b5a1e;color:#ffe9a8;padding:0 2px;border-radius:2px}
+  /* 行级证据弹窗 */
+  .evbtn{display:inline-block;font-size:10px;padding:0 6px;margin-left:4px;border-radius:8px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;vertical-align:1px}
+  .evbtn:hover{background:var(--accent);color:#fff}
+  #evOverlay{display:none;position:fixed;inset:0;background:rgba(5,8,15,.72);z-index:100;overflow:auto;padding:24px 12px}
+  #evModal{max-width:760px;margin:20px auto;background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:18px 22px}
+  #evModal h3{margin:0 0 10px;font-size:15px;color:var(--accent)}
+  #evModal .evrow{margin:6px 0;font-size:13px}
+  #evModal .evlab{color:var(--dim);display:inline-block;min-width:64px}
+  #evQuote{background:#10182b;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-top:8px;font-size:13px;line-height:1.7;white-space:pre-wrap;word-break:break-word}
+  #evModal .evlink{margin-top:10px}
+  #evClose{float:right;background:transparent;border:1px solid var(--line);color:var(--dim);border-radius:8px;padding:2px 10px;cursor:pointer}
+  #evClose:hover{color:#fff;border-color:var(--accent)}
   /* 手机端适配：缩小首列与字号，保证横向滚动时首列不独占屏幕 */
   @media (max-width:768px){
     body{font-size:13px}
@@ -87,7 +99,8 @@
     .tag{font-size:9px;padding:1px 4px}
     td ul{padding-left:12px}
     td li{margin-bottom:3px;font-size:12px}
-    footer{padding:0 12px 20px}
+    .evbtn{font-size:9px;padding:0 4px;margin-left:2px}
+    #evModal{padding:12px 14px;margin:8px auto}
   }
 </style>
 </head>
@@ -97,7 +110,7 @@
   <div class="sub">
     <b>核心主线：</b>CC（开发者社区需求对接方/开发者）× 砚仁（共创营项目负责人/S7-4 提案人）之间，围绕任务系统 2.0 开发费（2000 U）的费用矛盾。<br>
     <b>核心目的：</b>梳理这笔费用<b>从哪里开始、从哪里出现问题、相关责任人是谁</b>——看清整个责任流向。<br>
-    <b>阅读规则：</b>矩阵每一行 = 一个时间阶段；每一列 = 一个相关人；每一格 = 该人在该阶段看到/说出/做出的<b>事实</b>（只写事实，不写观点），每条附出处。
+    <b>阅读规则：</b>矩阵每一行 = 一个时间阶段；每一列 = 一个相关人；每一格 = 该人在该阶段看到/说出/做出的<b>事实</b>（只写事实，不写观点），每条附出处。点击彩色标签打开<b>原始文件全文</b>；点击 <button class="evbtn" onclick="return false" style="cursor:default">证</button> 按钮弹出<b>行级证据</b>（哪份文件、哪一行、谁说的、原话是什么）。会议类出处均同时提供【纪要】与【原文】两个链接。
   </div>
 </header>
 
@@ -105,7 +118,7 @@
   <h2>事情背景与组织关系（先看这个）</h2>
   <ul>
     <li><b>任务系统是什么：</b>南塘DAO 的任务系统（NT 积分任务平台）。</li>
-    <li><b>2.0 升级是什么：</b>为第三期共创营承接的新需求——起源于 4/15 动议的「三餐代购核算工具可能性」，后扩展为活动功能、周期性任务等；开发者社区 CC 承接开发，预算 2000U（S7-4 提案，5/11 创建，状态「未开始」）。
+    <li><b>2.0 升级是什么：</b>为第三期共创营承接的新需求——起源于 4/15 动议的「三餐代购核算工具可能性」，后扩展为活动功能、周期性任务等；开发者社区 CC 承接开发，预算 2000U（S7-4 提案，落款 2026-05-11，提案库标签「意见征集」、状态「未开始」<button class="evbtn" data-ev="e03b">证</button>）。
       <a class="tag t-meeting" href="会议原始记录/532194082-南塘艺术共创营（第三期）筹备-2026-04-15.md" target="_blank">会议·532194082</a>
       <a class="tag t-proposal" href="提案原始文件/S7-4任务系统平台2.0升级开发提案.md" target="_blank">提案·S7-4</a></li>
     <li><b>涉事组织与分工：</b>
@@ -145,67 +158,97 @@
 
 <div class="flow">
   <div class="node"><div class="rail"><div class="dot"></div><div class="vline"></div></div><div class="card">
-    <span class="nt">① 起点 · 4/15：</span>共创营筹备会动议仅是「与开发者社区<b>沟通、探讨</b>在任务系统上实现核算工具的<b>可能性</b>」，推进人为富章和跳跳，<b>全场无费用约定</b>；CC 缺席。
-    <a class="tag t-meeting" href="会议原始记录/532194082-南塘艺术共创营（第三期）筹备-2026-04-15.md" target="_blank">会议·532194082</a>
-    <span class="resp">→ 此时不存在任何付款承诺。</span>
+    <span class="nt">① 4/15 · 起点（共创营第三期筹备会，南塘DAO 组织，编号 532194082）：</span>富章提主动议——「从现在开始，与开发者社区<b>沟通、探讨</b>在任务系统上实现该（三餐代购核算）工具的<b>可能性</b>；如果开发者社区反响良好，由富章和跳跳负责推进」<button class="evbtn" data-ev="e01a">证</button><button class="evbtn" data-ev="e01c">原文</button>；表决通过（赞成 2：砚仁、蚊子；反对 0）。<b>动议全文无任何费用、报价、付款约定</b>；CC 缺席该会<button class="evbtn" data-ev="e01b">证</button>。
+    <a class="tag t-meeting" href="会议纪要/532194082-南塘DAO-南塘艺术共创营（第三期）筹备-纪要.md" target="_blank">纪要</a>
+    <a class="tag t-meeting" href="会议原始记录/532194082-南塘艺术共创营（第三期）筹备-2026-04-15.md" target="_blank">原文·532194082</a>
+    <span class="resp">→ 4/15 时点不存在任何付款承诺。</span>
   </div></div>
   <div class="node"><div class="rail"><div class="dot"></div><div class="vline"></div></div><div class="card">
-    <span class="nt">② 承接 · 4/16 晚–4/17：</span>CC 主动私聊砚仁「我主要负责做这次更新的新需求」，次日发来 PRD；此次对接<b>未谈价格、未谈谁付钱</b>。
+    <span class="nt">② 4/16 晚–4/17 · CC 承接：</span>CC 私聊砚仁「我主要负责做这次更新的新需求」，次日发来 PRD（该私聊原件未归档，此处为 CC 7/28 在南塘DAO群转发的记录）<button class="evbtn" data-ev="e02">证</button>；此次对接<b>未谈价格、未谈谁付钱</b>（双方 7/27、7/28 两次会议回溯均未提及当时谈过价格）。
     <a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群（CC 7/28 转发私聊）·待核验</a>
-    <span class="resp">→ 责任人：<span class="who">CC</span>（主动承接）。</span>
+    <span class="resp">→ 责任人：<span class="who">CC</span>（主动承接开发）。</span>
   </div></div>
   <div class="node"><div class="rail"><div class="dot"></div><div class="vline"></div></div><div class="card">
-    <span class="nt">③ 开发启动 · 4/16–4/30：</span>在无提案、无预算、无付款确认的情况下开工（S7-4 里程碑载 4/25 已完成安全优化与前端页面设计）；CC 7/27 自述「我说我可以做，我说没事，我可以先做。所以我就做了」。
+    <span class="nt">③ 4/16–5/11 · 开发先于程序：</span>CC×砚仁 4/16 晚已对接需求（节点②），而 S7-4 提案的落款日期是 5/11<button class="evbtn" data-ev="e03a">证</button>——即<b>开发启动早于任何提案、预算、付款确认</b>。CC 后来（7/27 第64期周会）自述当时「我说我可以做，我说没事，我可以先做。所以我就做了」<button class="evbtn" data-ev="e03c">证</button>。
     <a class="tag t-proposal" href="提案原始文件/S7-4任务系统平台2.0升级开发提案.md" target="_blank">提案·S7-4（Notion）</a>
-    <a class="tag t-meeting" href="会议原始记录/666064126-南塘DAO第64期周会.md" target="_blank">会议·666064126</a>
+    <a class="tag t-meeting" href="会议原始记录/666064126-南塘DAO第64期周会.md" target="_blank">原文·666064126</a>
     <span class="resp">→ 责任人：<span class="who">CC</span>（自行决定先做）。</span>
   </div></div>
   <div class="node"><div class="rail"><div class="dot"></div><div class="vline"></div></div><div class="card">
-    <span class="nt">④ 费用浮现 · 5/1–5/2：</span>CC 自称「为爱发电」并希望把预算算进共创营；资金信息链为 剑桥→砚仁→CC，内容是条件句「没有资金的话，是可以通过社区的需求由社区提供资金，然后让开发者社区完成」；砚仁 5/22 会上自认「我没有跟刘斌核对，这确实是我的失误」。
-    <a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群（7/28 CC 发言）·待核验</a>
-    <a class="tag t-meeting" href="会议原始记录/737937936-任务系统之活动功能-2026-05-22.md" target="_blank">会议·737937936</a>
+    <span class="nt">④ 5/1–5/2 · 私聊谈钱（原始记录未归档）：</span>南塘DAO群存档自 5/1 11:25 起，5/1–5/3 群内<b>无任何费用类消息</b>（逐条可查）<button class="evbtn" data-ev="e04a">证</button>——谈钱发生在 CC×砚仁 私聊，原始记录未归档。CC 本人 7/28 在群内自述：当时说「为爱发电」是玩笑，「后面还接了一句，干脆你送我一幅画算了，这不是拐着弯提醒你赶快和组织商议吗？」<button class="evbtn" data-ev="e04b">证</button><button class="evbtn" data-ev="e04c">证</button>。
+    <a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a>
+    <span class="resp">→ 私聊内容不可追溯；仅以 CC 本人后续群内自述为证。</span>
+  </div></div>
+  <div class="node"><div class="rail"><div class="dot"></div><div class="vline"></div></div><div class="card">
+    <span class="nt">⑤ 5/4 · 进度坐标（semi·X·iMeeing策略浅聊，南塘DAO 组织，编号 141375786）：</span>纪要载「任务系统已经完成一半，还未试用」，建议「联系CC了解任务系统的测试情况」<button class="evbtn" data-ev="e05">证</button>。
+    <a class="tag t-meeting" href="会议纪要/141375786-南塘DAO-semi·X·iMeeing策略浅聊-纪要.md" target="_blank">纪要</a>
+  </div></div>
+  <div class="node"><div class="rail"><div class="dot"></div><div class="vline"></div></div><div class="card">
+    <span class="nt">⑥ 5/11 · 程序启动（第53期例会，南塘DAO，编号 194501374）：</span>砚仁在议程二公开「我们仍然需要支付开发者的费用。我会写一个提案进行投票。关于经费的来源，我们会向相关部门申请」<button class="evbtn" data-ev="e06a">证</button>；虹阳（借用小白的手机发言）称「跟斌哥聊了，他说任务平台的开发费用是通过南塘道这边走的」<button class="evbtn" data-ev="e06b">证</button>。当天砚仁在 Notion 建 S7-4《任务系统平台2.0升级开发提案》：预算 2000 U（约 14,000 元），资金来源写「募捐」<button class="evbtn" data-ev="e06c">证</button>，提案库标签「意见征集」、状态「未开始」<button class="evbtn" data-ev="e03b">证</button>。
+    <a class="tag t-meeting" href="会议纪要/194501374-南塘DAO-第53期例会-纪要.md" target="_blank">纪要</a>
+    <a class="tag t-meeting" href="会议原始记录/194501374-第53期例会.md" target="_blank">原文·194501374</a>
+    <a class="tag t-proposal" href="提案原始文件/S7-4任务系统平台2.0升级开发提案.md" target="_blank">提案·S7-4</a>
+    <span class="resp">→ 承诺内容是「走提案+申请流程」，发出人：<span class="who">砚仁</span>（提案人）；「费用通过南塘道走」说法来源：<span class="who">虹阳</span>（转述，非刘兵本人发言）。</span>
+  </div></div>
+  <div class="node breaknode"><div class="rail"><div class="dot break"></div><div class="vline"></div></div><div class="card">
+    <span class="nt">⑦ 5/14 起 · 断点一：S7-4 停在 Notion，从未上 Snapshot 投票</span>——Snapshot 空间 s:ntdao.eth 的 S7 季度提案仅有 S7-1 结项报告<button class="evbtn" data-ev="e07b">证</button>。砚仁 7/27 在第64期周会解释原因：「到底怎么以什么样的需求提给你们……问洪阳，洪阳说也不知道怎么给你……所以我就没上了」<button class="evbtn" data-ev="e07a">证</button>。
+    <a class="tag t-vote" href="https://snapshot.box/#/s:ntdao.eth" target="_blank">Snapshot·ntdao.eth</a>
+    <a class="tag t-meeting" href="会议原始记录/666064126-南塘DAO第64期周会.md" target="_blank">原文·666064126</a>
+    <span class="resp">→ 责任人：<span class="who">砚仁</span>（提案人，跟进中断）。</span>
+  </div></div>
+  <div class="node"><div class="rail"><div class="dot"></div><div class="vline"></div></div><div class="card">
+    <span class="nt">⑧ 5/21 · 权责会（开发者社区周同步，编号 493790347，议程「南塘DAO的任务系统提案、明晰权责」）：</span>会上确认事实链——任务系统原为<b>开发者社区</b>的两阶段项目：第一阶段已结清，第二阶段未验收、未付费<button class="evbtn" data-ev="e08a">证</button>；2.0 新需求系砚仁基于共创营三期场景<b>直接找 CC</b> 开发<button class="evbtn" data-ev="e08a">证</button>；「CC 新开发的激励走南塘DAO国库还是开发者社区国库」在会上<b>悬而未决</b><button class="evbtn" data-ev="e08b">证</button>；CC 自述 4/15 之后未再跟进信息<button class="evbtn" data-ev="e08c">证</button>；虹阳说明「刘斌按第三期共创营效果决定是否付费」只是<b>口头信息、没有很明确</b><button class="evbtn" data-ev="e08d">证</button>。
+    <a class="tag t-meeting" href="会议纪要/493790347-开发者社区-周同步-纪要.md" target="_blank">纪要</a>
+    <a class="tag t-meeting" href="会议原始记录/493790347-周同步-2026-05-21.md" target="_blank">原文·493790347</a>
+    <span class="resp">→ 5/21 时点：出资路径未定；出资人刘兵本人未在任何记录中承诺支付这 2000 U。</span>
+  </div></div>
+  <div class="node"><div class="rail"><div class="dot"></div><div class="vline"></div></div><div class="card">
+    <span class="nt">⑨ 5/22 · 情绪与认责（任务系统之活动功能会，开发者社区，编号 737937936）：</span>CC「我一分钱都没拿到，甚至还有可能是空头支票」<button class="evbtn" data-ev="e09a">证</button>；砚仁自认「我的消息来源是剑桥告诉我的……我没有跟刘斌那边核对。这确实是我的失误」<button class="evbtn" data-ev="e09b">证</button>。
+    <a class="tag t-meeting" href="会议纪要/737937936-开发者社区-任务系统之活动功能-纪要.md" target="_blank">纪要</a>
+    <a class="tag t-meeting" href="会议原始记录/737937936-任务系统之活动功能-2026-05-22.md" target="_blank">原文·737937936</a>
     <span class="resp">→ 责任人：<span class="who">砚仁</span>（资金信息未经出资人核对即传递）。</span>
   </div></div>
   <div class="node"><div class="rail"><div class="dot"></div><div class="vline"></div></div><div class="card">
-    <span class="nt">⑤ 程序启动 · 5/11：</span>第53期例会议程二公开「开发者的费用还是得支付」「我会写一个提案进行投票」「需要向刘斌那边申请」；当晚 20:47 砚仁在 Notion 创建 S7-4（预算 2000 U / 约 14,000 元，状态「未开始」）。
-    <a class="tag t-meeting" href="会议原始记录/194501374-第53期例会.md" target="_blank">会议·194501374</a>
-    <a class="tag t-proposal" href="提案原始文件/S7-4任务系统平台2.0升级开发提案.md" target="_blank">提案·S7-4（Notion）</a>
-    <span class="resp">→ 承诺内容是「走提案+申请流程」，发出人：<span class="who">砚仁</span>（提案人）。</span>
-  </div></div>
-  <div class="node breaknode"><div class="rail"><div class="dot break"></div><div class="vline"></div></div><div class="card">
-    <span class="nt">⑥ 断点一 · 5/14 起：提案停在 Notion 草稿，从未上 Snapshot 投票</span>（Snapshot 上 S7 系列仅有 S7-1 结项报告）。客观背景：5/11 会上已说明投票平台受限；7/27 砚仁解释「问洪阳，洪阳说也不知道怎么给你……所以我就没上了」。
-    <a class="tag t-vote" href="https://snapshot.box/#/s:ntdao.eth" target="_blank">Snapshot·ntdao.eth</a>
-    <a class="tag t-meeting" href="会议原始记录/666064126-南塘DAO第64期周会.md" target="_blank">会议·666064126</a>
-    <a class="tag t-meeting" href="会议原始记录/194501374-第53期例会.md" target="_blank">会议·194501374</a>
-    <span class="resp">→ 责任人：<span class="who">砚仁</span>（提案人，跟进中断）；渠道说法来源：<span class="who">虹阳</span>（5/11 转述「任务平台的开发费用是通过南塘道这边走的」）。</span>
-  </div></div>
-  <div class="node breaknode"><div class="rail"><div class="dot break"></div><div class="vline"></div></div><div class="card">
-    <span class="nt">⑦ 断点二 · 5/21–5/22：资金路径始终停留在口头</span>——CC「我一毛钱都没拿到，然后还可能是空头支票」；小白「我们没有把这笔费用要到」；「刘斌按共创营效果决定是否付费」仅为虹阳转述的口头信息，出资人本人未在任何记录中承诺支付这 2000 U。
-    <a class="tag t-meeting" href="会议原始记录/493790347-周同步-2026-05-21.md" target="_blank">会议·493790347</a>
-    <a class="tag t-meeting" href="会议原始记录/737937936-任务系统之活动功能-2026-05-22.md" target="_blank">会议·737937936</a>
+    <span class="nt">⑩ 6/11 · 问题摆上台面（开发者社区周同步，编号 126684611，第五项议程「任务系统使用问题反馈」）：</span>虹阳「任务系统之前在开发者社区里做过，但目前没有给二期的费用，问题是摆着的。至于怎么解决，我也不知道」<button class="evbtn" data-ev="e10a">证</button>；CC「涉及新功能的扩展，那可能还是需要按相应流程走、走项目立项」<button class="evbtn" data-ev="e10b">证</button>。
+    <a class="tag t-meeting" href="会议纪要/126684611-开发者社区-周同步-纪要.md" target="_blank">纪要</a>
+    <a class="tag t-meeting" href="会议原始记录/126684611-周同步.md" target="_blank">原文·126684611</a>
   </div></div>
   <div class="node"><div class="rail"><div class="dot"></div><div class="vline"></div></div><div class="card">
-    <span class="nt">⑧ 对照线 · 5/28–6/19（多签功能 2500U+800U）：</span>同一时期另一笔开发费走通了全流程——有对接人（小白）、有报价、有费用讨论会（6/13）、有多签签署支付（6/14）。<b>对照说明：流程走通时费用能结；任务系统 2.0 这笔恰恰卡在没走流程。</b>
+    <span class="nt">⑪ 5/28–6/19 · 对照线（多签功能 2500U+800U，开发者社区/semi 群）：</span>同一时期另一笔开发费走通全流程——6/13 虹阳在 semi 群发「多签功能费用讨论」会议通知并写明「2500U是开发费用，800U是代码审核费用」<button class="evbtn" data-ev="e11a">证</button>；6/14 小白「按照会议通过的投票……把这笔交易拆分成800u和2500u发起……我签署完再移交权限」<button class="evbtn" data-ev="e11b">证</button>。<b>对照说明：流程走通时费用能结；任务系统 2.0 这笔恰恰卡在没走流程。</b>（6/13 该会议原文不在砚仁账号会议列表，见文末缺口④。）
     <a class="tag t-wechat" href="微信记录_weflow/semi_微信记录_20260829.md" target="_blank">微信·semi群·待核验</a>
-    <a class="tag t-meeting" href="会议原始记录/126684611-周同步.md" target="_blank">会议·126684611</a>
   </div></div>
   <div class="node"><div class="rail"><div class="dot"></div><div class="vline"></div></div><div class="card">
-    <span class="nt">⑨ 触发 · 7/20：</span>刘兵宣布资助南塘DAO 5 ETH，原话「由南塘DAO按照自身的运行情况，自主决定如何使用」——<b>未指明是否含开发费</b>；30 分钟后 CC 在群内首次公开提出「正好这次把款项结一下」。
+    <span class="nt">⑫ 7/4 · 结项报告核定（共创营三期，编号 632386385）：</span>外包费用清单原列「CC 工作量按 800 元核算」，砚仁提修正案「把 CC 修改成淅淅」并删除第二项，获默认一致同意——<b>共创营外包费用中的 CC 条目被当场移除</b><button class="evbtn" data-ev="e12a">证</button>；同一份结项报告致谢「CC及开发者社区对NT系统的持续维护」<button class="evbtn" data-ev="e12b">证</button>。
+    <a class="tag t-meeting" href="会议纪要/632386385-Dao南塘艺术共创营（第三期）-结项报告核定-纪要.md" target="_blank">纪要</a>
+    <a class="tag t-meeting" href="会议原始记录/632386385-结项报告核定-2026-07-04.md" target="_blank">原文·632386385</a>
+  </div></div>
+  <div class="node"><div class="rail"><div class="dot"></div><div class="vline"></div></div><div class="card">
+    <span class="nt">⑬ 7/20 · 触发（5 ETH 到账日）：</span>22:22 刘兵在南塘DAO群宣布「因为艺术共创营做的有成效，推进了南塘豆、semi、imeeting、bai任务系统在南塘线下活动中的使用，所以资助南塘DAO，5个eth。由南塘DAO按照自身的运行情况，自主决定如何使用」<button class="evbtn" data-ev="e13a">证</button>；22:27 刘兵补充「不是以我说的为准」<button class="evbtn" data-ev="e13b">证</button>；22:52（30 分钟后）CC 在群内首次公开提出「之前bai系统第三期的开发也是由于资金没有到位，一直都是开发者为爱发电，那正好这次把款项结一下」<button class="evbtn" data-ev="e13c">证</button>。当晚第62期周会第三项议程讨论「财务结算方案」，会上提出该款项性质（奖励还是投资款）需明确；<b>CC 缺席第62期周会</b><button class="evbtn" data-ev="e13d">证</button>。
     <a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a>
+    <a class="tag t-meeting" href="会议纪要/139021728-南塘DAO-南塘DAO第62期周会-纪要.md" target="_blank">纪要·62期</a>
+    <span class="resp">→ 刘兵的宣布全文<b>未指明 5 ETH 是否包含开发费</b>。</span>
   </div></div>
   <div class="node breaknode"><div class="rail"><div class="dot break"></div><div class="vline"></div></div><div class="card">
-    <span class="nt">⑩ 断点三 · 7/27：议题被搁置</span>——砚仁主动把 S7-4 列入第64期周会议程；CC 首次在会议记录中明确「跟着原来的报价走，是2000U」；砚仁「我承诺你的只是上提案……可没承诺过一定要给你」；奇迹行者动议「先搁置」，议题未表决即结束。
-    <a class="tag t-meeting" href="会议原始记录/666064126-南塘DAO第64期周会.md" target="_blank">会议·666064126</a>
-    <span class="resp">→ 搁置动议人：<span class="who">奇迹行者</span>。</span>
+    <span class="nt">⑭ 7/27 · 断点三：议题被搁置（第64期周会，南塘DAO，编号 666064126，第三项议程「任务系统平台2.0升级开发提案」</span><button class="evbtn" data-ev="e14a">证</button>）：CC 首次在会议记录中明确「还是跟着原来的报价走，是 2000U」<button class="evbtn" data-ev="e14b">证</button>；砚仁「我承诺你的，只是承诺是上提案……我可没承诺过，就是我要一定要给你」<button class="evbtn" data-ev="e14c">证</button>；奇迹行者提议「要不先搁置一下」，议题未表决即结束<button class="evbtn" data-ev="e14d">证</button>。
+    <a class="tag t-meeting" href="会议纪要/666064126-南塘DAO-南塘DAO第64期周会-纪要.md" target="_blank">纪要</a>
+    <a class="tag t-meeting" href="会议原始记录/666064126-南塘DAO第64期周会.md" target="_blank">原文·666064126</a>
+    <span class="resp">→ 搁置提议人：<span class="who">奇迹行者</span>。</span>
   </div></div>
   <div class="node"><div class="rail"><div class="dot"></div><div class="vline"></div></div><div class="card">
-    <span class="nt">⑪ 澄清 · 7/28：</span>砚仁×CC 梳理会，双方时间线基本一致，<b>约定找刘兵确认 5 ETH 是否含开发费</b>（砚仁先找富章商量）——截至本库归档（8/29），未见该确认的任何结果记录。
-    <a class="tag t-meeting" href="会议原始记录/157824952-关于任务系统开发过程与验收的梳理.md" target="_blank">会议·157824952</a>
+    <span class="nt">⑮ 7/28 · 澄清（砚仁×CC 梳理会，共创营三期组织，编号 157824952）：</span>CC 表明立场「刘斌他打的那个 5 ETH 应该是有这次开发者的费用了」<button class="evbtn" data-ev="e15a">证</button>；双方<b>约定找刘兵确认 5 ETH 是否含开发费</b>，砚仁表示先找富章商量怎么谈<button class="evbtn" data-ev="e15b">证</button>——截至本库归档（8/29），未见该确认的任何结果记录。
+    <a class="tag t-meeting" href="会议纪要/157824952-Dao南塘艺术共创营（第三期）-关于任务系统开发过程与验收的梳理-纪要.md" target="_blank">纪要</a>
+    <a class="tag t-meeting" href="会议原始记录/157824952-关于任务系统开发过程与验收的梳理.md" target="_blank">原文·157824952</a>
     <span class="resp">→ 待确认人：<span class="who">刘兵</span>（唯一有权说明 5 ETH 范围的人）。</span>
   </div></div>
+  <div class="node"><div class="rail"><div class="dot"></div><div class="vline"></div></div><div class="card">
+    <span class="nt">⑯ 8/10–8/13 · 先补旧投票：</span>小白 8/10 在群内说明「南塘DAO按原通过提案在预留着这部分资金」，并确认结项报告当晚定投票方案<button class="evbtn" data-ev="e16a">证</button>；8/12 小白通知「S7-1提案明晚20:30到期」<button class="evbtn" data-ev="e16b">证</button>；S7-1 结项报告于 8/10–8/13 在 Snapshot 投票通过——<b>S7 季度唯一上投票的提案</b><button class="evbtn" data-ev="e16c">证</button>。
+    <a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a>
+    <a class="tag t-vote" href="https://snapshot.box/#/s:ntdao.eth/proposal/0x5e1a4fff545931860ef98f2fc83393e584350dfc11438ddc168636a43082b6b1" target="_blank">Snapshot·S7-1（通过）</a>
+  </div></div>
   <div class="node"><div class="rail"><div class="dot"></div></div><div class="card">
-    <span class="nt">⑫ 现状 · 8/24：</span>第67期周会——小白「南塘不会从国库支付」并提出「若刘斌确认 5ETH 包含，项目方 60% 先付 2000U 的 60%、南塘付 40%」方案；CC「这次也确实付了，我这次有入账」；聚焦动议被否决（赞成 1：CC；反对 3：小白/木木曦/淅淅）；结论：<b>按正式提案流程走（征集意见→周会→公示投票）</b>。截至本阶段，该笔费用仍未支付。
-    <a class="tag t-meeting" href="会议原始记录/722270724-南塘DAO第67期周会.md" target="_blank">会议·722270724</a>
+    <span class="nt">⑰ 8/24 · 现状（第67期周会，南塘DAO，编号 722270724）：</span>小白「南塘道肯定是不会从国库拨付资金去支付这笔费用的」，并提出条件方案「若刘斌明确答复 5ETH 包含开发费：项目方 60% 先付 2000U 的 60%，南塘DAO 付 40%」<button class="evbtn" data-ev="e17a">证</button><button class="evbtn" data-ev="e17b">证</button>；CC「这次也确实付了，我这边这次也有入账」<button class="evbtn" data-ev="e17c">证</button>；CC 的聚焦议题动议被否决（赞成 1：CC；反对 3：小白、木木曦、淅淅）<button class="evbtn" data-ev="e17d">证</button>；淅淅表态「可以由三期的项目去出……谁受益谁负责」<button class="evbtn" data-ev="e17e">证</button>；结论：<b>按正式提案流程走（Notion 征集意见→周会过会→公示→Snapshot 投票）</b>，小白与砚仁均确认<button class="evbtn" data-ev="e17f">证</button><button class="evbtn" data-ev="e17g">证</button>。截至本阶段，该笔费用仍未支付。
+    <a class="tag t-meeting" href="会议纪要/722270724-南塘DAO-南塘DAO第67期周会-纪要.md" target="_blank">纪要</a>
+    <a class="tag t-meeting" href="会议原始记录/722270724-南塘DAO第67期周会.md" target="_blank">原文·722270724</a>
     <span class="resp">→ 否决票：<span class="who">小白、木木曦、淅淅</span>。</span>
   </div></div>
 </div>
@@ -273,7 +316,7 @@
 
 <!-- ======== 阶段 2 ======== -->
 <tr>
-  <th><div class="stage-date">2026-04-15</div><div class="stage-name">共创营三期筹备会：动议「沟通、探讨可能性」，无费用约定</div><div class="stage-meta"><div><span class="tag t-occ-camp">共创营·筹备会（临时）</span></div><div>议题：三期共创营筹备＋三餐代购核算工具</div><div>要办：动议「与开发者社区沟通探讨工具可能性」，富章/跳跳推进；全场无费用约定</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/532194082-南塘艺术共创营（第三期）筹备-2026-04-15.md" target="_blank">会议·532194082</a></div></th>
+  <th><div class="stage-date">2026-04-15</div><div class="stage-name">共创营三期筹备会：动议「沟通、探讨可能性」，无费用约定</div><div class="stage-meta"><div><span class="tag t-occ-camp">共创营·筹备会（临时）</span></div><div>议题：三期共创营筹备＋三餐代购核算工具</div><div>要办：动议「与开发者社区沟通探讨工具可能性」，富章/跳跳推进；全场无费用约定</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/532194082-南塘艺术共创营（第三期）筹备-2026-04-15.md" target="_blank">会议·532194082</a><a class="tag t-meeting" href="会议纪要/532194082-南塘DAO-南塘艺术共创营（第三期）筹备-纪要.md" target="_blank">纪要·532194082</a></div></th>
   <td><ul><li>缺席（出席名单：砚仁、跳跳、野生蓝莓、小白、奇迹行者、KIKO、木木曦、淅淅、若曦、蚊子出席，富章列席，云展旁听；CC、洪水缺席）。<a class="tag t-meeting" href="会议原始记录/532194082-南塘艺术共创营（第三期）筹备-2026-04-15.md" target="_blank">会议·532194082</a></li></ul></td>
   <td><ul>
     <li>出席并提出设想：任务系统可否增加「直接下订单」功能，用于早餐/午餐预定与 NT 支付记录；「相当于就是一个美团版的任务系统」。<a class="tag t-meeting" href="会议原始记录/532194082-南塘艺术共创营（第三期）筹备-2026-04-15.md" target="_blank">会议·532194082</a></li>
@@ -294,7 +337,7 @@
 
 <!-- ======== 阶段 3 ======== -->
 <tr>
-  <th><div class="stage-date">2026-04-16</div><div class="stage-name">开发者社区周同步：资金池见底；共创营新增功能对齐</div><div class="stage-meta"><div><span class="tag t-occ-dev">开发者社区·周同步</span></div><div>议题：OAuth/SSDK 方案＋共创营新功能对齐</div><div>要办：对齐活动/摆摊等新功能；明确资金惯例「先提方案、再找刘斌申请」</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/738816174-开发者社区周同步-2026-04-16.md" target="_blank">会议·738816174</a></div></th>
+  <th><div class="stage-date">2026-04-16</div><div class="stage-name">开发者社区周同步：资金池见底；共创营新增功能对齐</div><div class="stage-meta"><div><span class="tag t-occ-dev">开发者社区·周同步</span></div><div>议题：OAuth/SSDK 方案＋共创营新功能对齐</div><div>要办：对齐活动/摆摊等新功能；明确资金惯例「先提方案、再找刘斌申请」</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/738816174-开发者社区周同步-2026-04-16.md" target="_blank">会议·738816174</a><a class="tag t-meeting" href="会议纪要/738816174-开发者社区-周同步-纪要.md" target="_blank">纪要·738816174</a></div></th>
   <td><ul>
     <li>亲自出席（主议程为 jiang 主讲 OAuth 2.0 数字身份方案）。<a class="tag t-meeting" href="会议原始记录/738816174-开发者社区周同步-2026-04-16.md" target="_blank">会议·738816174</a></li>
     <li>「SSDK和O2肯定最后只能选一个，免得重复。现在的问题是，目前的资金池里没有这么多钱了，连付我们那个都不够了。」<a class="tag t-meeting" href="会议原始记录/738816174-开发者社区周同步-2026-04-16.md" target="_blank">会议·738816174</a></li>
@@ -334,7 +377,7 @@
 
 <!-- ======== 阶段 5 ======== -->
 <tr>
-  <th><div class="stage-date">2026-04-16 ~ 04-30</div><div class="stage-name">CC 在无提案、无预算、无付款确认下自行启动开发</div><div class="stage-meta"><div><span class="tag t-occ-proc">开发进行（无会议）</span></div><div>议题：2.0 开发</div><div>要办：无提案/预算/付款确认下开工；4/25 完成安全优化与前端页面设计</div></div><div class="stage-src"><a class="tag t-proposal" href="提案原始文件/S7-4任务系统平台2.0升级开发提案.md" target="_blank">提案·S7-4（Notion）</a><a class="tag t-meeting" href="会议原始记录/666064126-南塘DAO第64期周会.md" target="_blank">会议·666064126</a></div></th>
+  <th><div class="stage-date">2026-04-16 ~ 04-30</div><div class="stage-name">CC 在无提案、无预算、无付款确认下自行启动开发</div><div class="stage-meta"><div><span class="tag t-occ-proc">开发进行（无会议）</span></div><div>议题：2.0 开发</div><div>要办：无提案/预算/付款确认下开工；4/25 完成安全优化与前端页面设计</div></div><div class="stage-src"><a class="tag t-proposal" href="提案原始文件/S7-4任务系统平台2.0升级开发提案.md" target="_blank">提案·S7-4（Notion）</a><a class="tag t-meeting" href="会议原始记录/666064126-南塘DAO第64期周会.md" target="_blank">会议·666064126</a><a class="tag t-meeting" href="会议纪要/666064126-南塘DAO-南塘DAO第64期周会-纪要.md" target="_blank">纪要·666064126</a></div></th>
   <td><ul>
     <li>4/25 前已开始写代码：S7-4 提案「根据开发团队实际进度，已完成的里程碑如下」所载进度（4/25 完成安全优化和前端页面设计）。<a class="tag t-proposal" href="提案原始文件/S7-4任务系统平台2.0升级开发提案.md" target="_blank">提案·S7-4（Notion）</a></li>
     <li>7/27 自述当时情形：「因为当时就有人说他们不想处理，只是说没有空，或者觉得可能没有资金，所以他们不想做。我说我可以做，我说没事，我可以先做。所以我就做了。」<a class="tag t-meeting" href="会议原始记录/666064126-南塘DAO第64期周会.md" target="_blank">会议·666064126</a></li>
@@ -352,9 +395,9 @@
 
 <!-- ======== 阶段 6 ======== -->
 <tr>
-  <th><div class="stage-date">2026-05-01 ~ 05-05</div><div class="stage-name">谈钱开始：CC「为爱发电」；资金信息链=剑桥→砚仁→CC（条件句）</div><div class="stage-meta"><div><span class="tag t-occ-wx">微信群</span><span class="tag t-occ-proc">＋5/22 会回溯</span></div><div>议题：费用首次浮现</div><div>要办：剑桥条件句经砚仁转达 CC；CC 自称「为爱发电」、希望预算算进共创营</div></div><div class="stage-src"><a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a><a class="tag t-meeting" href="会议原始记录/737937936-任务系统之活动功能-2026-05-22.md" target="_blank">会议·737937936</a></div></th>
+  <th><div class="stage-date">2026-05-01 ~ 05-05</div><div class="stage-name">私聊谈钱（原始记录未归档）；资金信息链=剑桥→砚仁→CC（条件句，5/22 会上回溯）</div><div class="stage-meta"><div><span class="tag t-occ-wx">私聊（未归档）</span><span class="tag t-occ-proc">＋5/22 会与 7/28 群自述回溯</span></div><div>议题：费用首次浮现（仅在私聊）</div><div>要办：剑桥条件句经砚仁转达 CC；CC 在私聊中称「为爱发电」（CC 7/28 群内自述）</div></div><div class="stage-src"><a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a><a class="tag t-meeting" href="会议原始记录/737937936-任务系统之活动功能-2026-05-22.md" target="_blank">会议·737937936</a><a class="tag t-meeting" href="会议纪要/737937936-开发者社区-任务系统之活动功能-纪要.md" target="_blank">纪要·737937936</a></div></th>
   <td><ul>
-    <li>5/1 前后自称本次开发是「为爱发电」；7/28 群里解释：「AI写的当然听不出为爱发电是句玩笑话啊。我后面还接了一句，干脆你送我一幅画算了，这不是拐着弯提醒你赶快和组织商议吗？」<a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a></li>
+    <li>5/1–5/2 与砚仁私聊中自称本次开发「为爱发电」（私聊原件未归档）；CC 7/28 在南塘DAO群自述：「AI写的当然听不出为爱发电是句玩笑话啊。我后面还接了一句，干脆你送我一幅画算了，这不是拐着弯提醒你赶快和组织商议吗？」<button class="evbtn" data-ev="e04b">证</button><button class="evbtn" data-ev="e04a">证</button><a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a></li>
     <li>自述推进前提：「我已经明确说明此次资金并不由开发者社区支付，在听到『没有资金的话，是可以通过社区的需求由社区提供资金，然后让开发者社区完成』时才着手推进项目。」（7/28 群发言）<a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a></li>
   </ul></td>
   <td><ul>
@@ -372,7 +415,7 @@
 
 <!-- ======== 阶段 7 ======== -->
 <tr>
-  <th><div class="stage-date">2026-05-03 ~ 05-04</div><div class="stage-name">共创营提案成文并发出；第52期例会公开提案全文</div><div class="stage-meta"><div><span class="tag t-occ-camp">共创营提案</span><span class="tag t-occ-nt">南塘DAO·52期例会</span></div><div>议题：共创营提案发布</div><div>要办：提案成文发出并上会公开（初版含 13000 团队绩效，后被否决改稿）</div></div><div class="stage-src"><a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a><a class="tag t-meeting" href="会议原始记录/536731278-南塘DAO第52期例会-2026-05-04.md" target="_blank">会议·536731278</a></div></th>
+  <th><div class="stage-date">2026-05-03 ~ 05-04</div><div class="stage-name">共创营提案成文并发出；第52期例会公开提案全文</div><div class="stage-meta"><div><span class="tag t-occ-camp">共创营提案</span><span class="tag t-occ-nt">南塘DAO·52期例会</span></div><div>议题：共创营提案发布</div><div>要办：提案成文发出并上会公开（初版含 13000 团队绩效，后被否决改稿）</div></div><div class="stage-src"><a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a><a class="tag t-meeting" href="会议原始记录/536731278-南塘DAO第52期例会-2026-05-04.md" target="_blank">会议·536731278</a><a class="tag t-meeting" href="会议纪要/536731278-南塘DAO-第52期例会-纪要.md" target="_blank">纪要·536731278</a></div></th>
   <td><ul><li>缺席第52期例会；会上公布 S6 票权表，CC 票权 770/19.62。<a class="tag t-meeting" href="会议原始记录/536731278-南塘DAO第52期例会-2026-05-04.md" target="_blank">会议·536731278</a></li></ul></td>
   <td><ul>
     <li>5/3 17:06 在南塘DAO群发出《南塘艺术共创营（第三期）项目提案.pdf》；17:35 发出《2026年S6季度投票权通知.pdf》。<a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a></li>
@@ -391,7 +434,7 @@
 
 <!-- ======== 阶段 8 ======== -->
 <tr class="key-row">
-  <th><div class="stage-date">2026-05-11</div><div class="stage-name">第53期例会议程二「nt任务平台开发提案」公开上会；当晚 20:47 创建 S7-4（2000U，状态「未开始」）</div><div class="stage-meta"><div><span class="tag t-occ-nt">南塘DAO·53期例会（议程二）</span></div><div>议题：「nt任务平台开发提案」</div><div>要办：公开「费用要支付、写提案投票、向刘斌申请」；当晚创建 S7-4（2000U/未开始）</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/194501374-第53期例会.md" target="_blank">会议·194501374</a><a class="tag t-proposal" href="提案原始文件/S7-4任务系统平台2.0升级开发提案.md" target="_blank">提案·S7-4（Notion）</a></div></th>
+  <th><div class="stage-date">2026-05-11</div><div class="stage-name">第53期例会议程二「nt任务平台开发提案」公开上会；当天创建 S7-4（2000U，提案库状态「未开始」）</div><div class="stage-meta"><div><span class="tag t-occ-nt">南塘DAO·53期例会（议程二）</span></div><div>议题：「nt任务平台开发提案」</div><div>要办：公开「费用要支付、写提案投票、向相关部门申请」；当天创建 S7-4（2000U/未开始）</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/194501374-第53期例会.md" target="_blank">会议·194501374</a><a class="tag t-proposal" href="提案原始文件/S7-4任务系统平台2.0升级开发提案.md" target="_blank">提案·S7-4（Notion）</a><a class="tag t-meeting" href="会议纪要/194501374-南塘DAO-第53期例会-纪要.md" target="_blank">纪要·194501374</a></div></th>
   <td><ul>
     <li>亲自出席（有表决权成员 13 人在场，含 CC、砚仁、小白、奇迹行者、若曦；跳跳缺席）。<a class="tag t-meeting" href="会议原始记录/194501374-第53期例会.md" target="_blank">会议·194501374</a></li>
     <li>当场听到：「这个提案还没写完」「投票平台好像最近不能用了，它老是限制我投票，所以一时半会儿这个提案也投不了票」（提案当时未写好、未公开）。<a class="tag t-meeting" href="会议原始记录/194501374-第53期例会.md" target="_blank">会议·194501374</a></li>
@@ -399,7 +442,7 @@
   </ul></td>
   <td><ul>
     <li>议程二公开说明：「我们的这个开发者的这个费用还是得支付」「我会写一个提案进行投票」「我们这边需要向他（刘斌）那边申请，所以我需要去写一个这样的提案」（L449-453）；「这个任务平台的提案，这次是一个周会的公开。」<a class="tag t-meeting" href="会议原始记录/194501374-第53期例会.md" target="_blank">会议·194501374</a></li>
-    <li>当晚 20:47（北京时间）在 Notion 创建 S7-4《任务系统平台2.0升级开发提案》：预算 <b>2000 U（USDT，约 14,000 元）</b>，状态「未开始」；里程碑 5/15 联调、5/20 部署培训、5/25 交付；资金来源写「募集」。<a class="tag t-proposal" href="提案原始文件/S7-4任务系统平台2.0升级开发提案.md" target="_blank">提案·S7-4（Notion）</a></li>
+    <li>当天在 Notion 创建 S7-4《任务系统平台2.0升级开发提案》（落款 2026年5月11日）：预算 <b>2000 U（USDT，约 14,000 元）</b>；剩余里程碑 5/15 联调、5/20 部署培训、5/25 交付；资金来源写「募捐」；提案库标签「意见征集」、状态「未开始」<button class="evbtn" data-ev="e03a">证</button><button class="evbtn" data-ev="e03b">证</button><a class="tag t-proposal" href="提案原始文件/S7-4任务系统平台2.0升级开发提案.md" target="_blank">提案·S7-4（Notion）</a></li>
     <li>20:01 在南塘DAO群发出当晚例会议程，含「2. nt任务平台开发提案」。<a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a></li>
   </ul></td>
   <td><ul><li>未出席；砚仁会上转述其渠道要求：「刘斌要求开发者社区通过社区的需求去获得资金」。<a class="tag t-meeting" href="会议原始记录/194501374-第53期例会.md" target="_blank">会议·194501374</a></li></ul></td>
@@ -434,7 +477,7 @@
 
 <!-- ======== 阶段 10 ======== -->
 <tr>
-  <th><div class="stage-date">2026-05-17 ~ 05-18</div><div class="stage-name">S6-3 5/17版被否决；第54期例会公开共创营修改与预算</div><div class="stage-meta"><div><span class="tag t-occ-nt">南塘DAO·54期例会</span><span class="tag t-occ-proc">Snapshot</span></div><div>议题：共创营提案修改与预算</div><div>要办：S6-3 5/17 版被否决→改稿，预算公开</div></div><div class="stage-src"><a class="tag t-vote" href="https://snapshot.box/#/s:ntdao.eth/proposal/0x7a4f67b883ff93df5a47c6e7f10c3243ff1b7999cbbaaf9098756c4edce9aa0e" target="_blank">Snapshot·S6-3(5/17版)</a><a class="tag t-meeting" href="会议原始记录/248548814-第54期例会.md" target="_blank">会议·248548814</a></div></th>
+  <th><div class="stage-date">2026-05-17 ~ 05-18</div><div class="stage-name">S6-3 5/17版被否决；第54期例会公开共创营修改与预算</div><div class="stage-meta"><div><span class="tag t-occ-nt">南塘DAO·54期例会</span><span class="tag t-occ-proc">Snapshot</span></div><div>议题：共创营提案修改与预算</div><div>要办：S6-3 5/17 版被否决→改稿，预算公开</div></div><div class="stage-src"><a class="tag t-vote" href="https://snapshot.box/#/s:ntdao.eth/proposal/0x7a4f67b883ff93df5a47c6e7f10c3243ff1b7999cbbaaf9098756c4edce9aa0e" target="_blank">Snapshot·S6-3(5/17版)</a><a class="tag t-meeting" href="会议原始记录/248548814-第54期例会.md" target="_blank">会议·248548814</a><a class="tag t-meeting" href="会议纪要/248548814-南塘DAO-第54期例会-纪要.md" target="_blank">纪要·248548814</a></div></th>
   <td><ul><li>缺席第54期例会。<a class="tag t-meeting" href="会议原始记录/248548814-第54期例会.md" target="_blank">会议·248548814</a></li></ul></td>
   <td><ul>
     <li>S6-3 5/17版 Snapshot 投票被否决：For 6,955.9 / Against 42,374.01；砚仁投 For 6,955.9。<a class="tag t-vote" href="https://snapshot.box/#/s:ntdao.eth/proposal/0x7a4f67b883ff93df5a47c6e7f10c3243ff1b7999cbbaaf9098756c4edce9aa0e" target="_blank">Snapshot·S6-3(5/17版)</a></li>
@@ -456,7 +499,7 @@
 
 <!-- ======== 阶段 11 ======== -->
 <tr>
-  <th><div class="stage-date">2026-05-21</div><div class="stage-name">开发者社区周同步：二期尾款未结；「免费升级」的前提是二期费用到账</div><div class="stage-meta"><div><span class="tag t-occ-dev">开发者社区·周同步</span></div><div>议题：二期尾款</div><div>要办：CC 要求先结二期 2000U；「免费升级」以二期到账为前提</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/493790347-周同步-2026-05-21.md" target="_blank">会议·493790347</a></div></th>
+  <th><div class="stage-date">2026-05-21</div><div class="stage-name">开发者社区周同步：二期尾款未结；「免费升级」的前提是二期费用到账</div><div class="stage-meta"><div><span class="tag t-occ-dev">开发者社区·周同步</span></div><div>议题：二期尾款</div><div>要办：CC 要求先结二期 2000U；「免费升级」以二期到账为前提</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/493790347-周同步-2026-05-21.md" target="_blank">会议·493790347</a><a class="tag t-meeting" href="会议纪要/493790347-开发者社区-周同步-纪要.md" target="_blank">纪要·493790347</a></div></th>
   <td><ul>
     <li>出席（有表决权成员：野生蓝莓、云展、CC、xiaobai；砚仁为其他人员）。<a class="tag t-meeting" href="会议原始记录/493790347-周同步-2026-05-21.md" target="_blank">会议·493790347</a></li>
     <li>「关于金额的资金能到账的话，我可以免费给他升级一下，没有问题。」（L310）——前提是二期开发费到账。<a class="tag t-meeting" href="会议原始记录/493790347-周同步-2026-05-21.md" target="_blank">会议·493790347</a></li>
@@ -482,7 +525,7 @@
 
 <!-- ======== 阶段 12 ======== -->
 <tr class="key-row">
-  <th><div class="stage-date">2026-05-22</div><div class="stage-name">任务系统之活动功能会：CC「一毛钱没拿到、可能空头支票」；S6-3 5/22版投票通过</div><div class="stage-meta"><div><span class="tag t-occ-camp">活动功能会（共创营×开发者社区）</span><span class="tag t-occ-proc">Snapshot</span></div><div>议题：活动功能＋共创营预算</div><div>要办：CC「一毛钱没拿到、可能空头支票」；S6-3 5/22 版投票通过</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/737937936-任务系统之活动功能-2026-05-22.md" target="_blank">会议·737937936</a><a class="tag t-vote" href="https://snapshot.box/#/s:ntdao.eth/proposal/0x8aaef1d4fdd021b4acadd5c78b7fc851b82fb8ecbcd8e9a22b9c2594fb7a91d1" target="_blank">Snapshot·S6-3(5/22版)</a></div></th>
+  <th><div class="stage-date">2026-05-22</div><div class="stage-name">任务系统之活动功能会：CC「一毛钱没拿到、可能空头支票」；S6-3 5/22版投票通过</div><div class="stage-meta"><div><span class="tag t-occ-camp">活动功能会（共创营×开发者社区）</span><span class="tag t-occ-proc">Snapshot</span></div><div>议题：活动功能＋共创营预算</div><div>要办：CC「一毛钱没拿到、可能空头支票」；S6-3 5/22 版投票通过</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/737937936-任务系统之活动功能-2026-05-22.md" target="_blank">会议·737937936</a><a class="tag t-vote" href="https://snapshot.box/#/s:ntdao.eth/proposal/0x8aaef1d4fdd021b4acadd5c78b7fc851b82fb8ecbcd8e9a22b9c2594fb7a91d1" target="_blank">Snapshot·S6-3(5/22版)</a><a class="tag t-meeting" href="会议纪要/737937936-开发者社区-任务系统之活动功能-纪要.md" target="_blank">纪要·737937936</a></div></th>
   <td><ul>
     <li>出席（野生蓝莓、CC、砚仁；xiaobai、云展缺席）。<a class="tag t-meeting" href="会议原始记录/737937936-任务系统之活动功能-2026-05-22.md" target="_blank">会议·737937936</a></li>
     <li>「我已经耗费十几天在这个上面了，我不想再扔更多的沉没成本了……但现在我一毛钱都没拿到，然后还可能是空头支票。」（L331-337）「价格不便宜。」<a class="tag t-meeting" href="会议原始记录/737937936-任务系统之活动功能-2026-05-22.md" target="_blank">会议·737937936</a></li>
@@ -507,7 +550,7 @@
 
 <!-- ======== 阶段 13 ======== -->
 <tr>
-  <th><div class="stage-date">2026-05-23 ~ 05-24</div><div class="stage-name">「xiaobai创建的会议」愿景讨论；semi 群建立（微信记录开始）</div><div class="stage-meta"><div><span class="tag t-occ-dev">xiaobai 创建会</span><span class="tag t-occ-wx">semi 群建立</span></div><div>议题：愿景讨论</div><div>要办：semi 群成立，开发者社区内部沟通渠道开通</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/102425670-xiaobai创建的会议.md" target="_blank">会议·102425670</a><a class="tag t-wechat" href="微信记录_weflow/semi_微信记录_20260829.md" target="_blank">微信·semi群·待核验</a></div></th>
+  <th><div class="stage-date">2026-05-23 ~ 05-24</div><div class="stage-name">「xiaobai创建的会议」愿景讨论；semi 群建立（微信记录开始）</div><div class="stage-meta"><div><span class="tag t-occ-dev">xiaobai 创建会</span><span class="tag t-occ-wx">semi 群建立</span></div><div>议题：愿景讨论</div><div>要办：semi 群成立，开发者社区内部沟通渠道开通</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/102425670-xiaobai创建的会议.md" target="_blank">会议·102425670</a><a class="tag t-wechat" href="微信记录_weflow/semi_微信记录_20260829.md" target="_blank">微信·semi群·待核验</a><a class="tag t-meeting" href="会议纪要/102425670-南塘DAO-xiaobai创建的会议-纪要.md" target="_blank">纪要·102425670</a></div></th>
   <td><ul>
     <li>缺席 xiaobai 会议。<a class="tag t-meeting" href="会议原始记录/102425670-xiaobai创建的会议.md" target="_blank">会议·102425670</a></li>
     <li>5/24 semi 群：任务系统预付功能「具体细节可以问她（云展），我记得有一次验收的时候已经展示了是可以用的」。<a class="tag t-wechat" href="微信记录_weflow/semi_微信记录_20260829.md" target="_blank">微信·semi群·待核验</a></li>
@@ -528,7 +571,7 @@
 
 <!-- ======== 阶段 14 ======== -->
 <tr>
-  <th><div class="stage-date">2026-05-28 ~ 06-19</div><div class="stage-name">对照线：semi 多签功能开发费（2500U+800U）走通全流程并完成支付；同期任务系统 2.0 费用无进展</div><div class="stage-meta"><div><span class="tag t-occ-dev">开发者社区</span><span class="tag t-occ-wx">semi 群</span><span class="tag t-occ-proc">6/13 费用会＋6/14 多签</span></div><div>议题：多签功能开发费</div><div>要办：2500U+800U 走通「对接→报价→费用会→多签支付」全流程（对照线）</div></div><div class="stage-src"><a class="tag t-wechat" href="微信记录_weflow/semi_微信记录_20260829.md" target="_blank">微信·semi群·待核验</a><a class="tag t-meeting" href="会议原始记录/126684611-周同步.md" target="_blank">会议·126684611</a></div></th>
+  <th><div class="stage-date">2026-05-28 ~ 06-19</div><div class="stage-name">对照线：semi 多签功能开发费（2500U+800U）走通全流程并完成支付；同期任务系统 2.0 费用无进展</div><div class="stage-meta"><div><span class="tag t-occ-dev">开发者社区</span><span class="tag t-occ-wx">semi 群</span><span class="tag t-occ-proc">6/13 费用会＋6/14 多签</span></div><div>议题：多签功能开发费</div><div>要办：2500U+800U 走通「对接→报价→费用会→多签支付」全流程（对照线）</div></div><div class="stage-src"><a class="tag t-wechat" href="微信记录_weflow/semi_微信记录_20260829.md" target="_blank">微信·semi群·待核验</a><a class="tag t-meeting" href="会议原始记录/126684611-周同步.md" target="_blank">会议·126684611</a><a class="tag t-meeting" href="会议纪要/126684611-开发者社区-周同步-纪要.md" target="_blank">纪要·126684611</a></div></th>
   <td><ul>
     <li>5/28 semi群：「jiang上次会议没有参加，不知道你把多签功能指定给了我就先做了，结果撞了」「我这边也是做得差不多了」「公示投票的prd也是我写的嘛」。<a class="tag t-wechat" href="微信记录_weflow/semi_微信记录_20260829.md" target="_blank">微信·semi群·待核验</a></li>
     <li>5/29 semi群：「原先的semi写得很好，我没有做任何改动，只是在原有的semi单签栈上做增量扩展……仅是新增链下协调层。」<a class="tag t-wechat" href="微信记录_weflow/semi_微信记录_20260829.md" target="_blank">微信·semi群·待核验</a></li>
@@ -564,7 +607,7 @@
 
 <!-- ======== 阶段 15 ======== -->
 <tr>
-  <th><div class="stage-date">2026-06-18 ~ 06-19</div><div class="stage-name">共创营延期会议 + 增时服务会；S6-7 变更说明全票通过</div><div class="stage-meta"><div><span class="tag t-occ-camp">共创营·延期会＋增时服务会</span><span class="tag t-occ-proc">Snapshot</span></div><div>议题：共创营延期与增时</div><div>要办：S6-7 变更说明全票通过</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/487768979-共创营延期会议-2026-06-18.md" target="_blank">会议·487768979</a><a class="tag t-meeting" href="会议原始记录/155090131-共创营增时服务-2026-06-19.md" target="_blank">会议·155090131</a><a class="tag t-vote" href="https://snapshot.box/#/s:ntdao.eth/proposal/0xbbbf0772dd5eb42d523bdd143b52461d5cda2e30ba1e6cf05f1a8449fb300507" target="_blank">Snapshot·S6-7</a></div></th>
+  <th><div class="stage-date">2026-06-18 ~ 06-19</div><div class="stage-name">共创营延期会议 + 增时服务会；S6-7 变更说明全票通过</div><div class="stage-meta"><div><span class="tag t-occ-camp">共创营·延期会＋增时服务会</span><span class="tag t-occ-proc">Snapshot</span></div><div>议题：共创营延期与增时</div><div>要办：S6-7 变更说明全票通过</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/487768979-共创营延期会议-2026-06-18.md" target="_blank">会议·487768979</a><a class="tag t-meeting" href="会议原始记录/155090131-共创营增时服务-2026-06-19.md" target="_blank">会议·155090131</a><a class="tag t-vote" href="https://snapshot.box/#/s:ntdao.eth/proposal/0xbbbf0772dd5eb42d523bdd143b52461d5cda2e30ba1e6cf05f1a8449fb300507" target="_blank">Snapshot·S6-7</a><a class="tag t-meeting" href="会议纪要/487768979-南塘DAO-共创营延期会议-纪要.md" target="_blank">纪要·487768979</a><a class="tag t-meeting" href="会议纪要/155090131-南塘DAO-共创营增时服务-纪要.md" target="_blank">纪要·155090131</a></div></th>
   <td><ul><li>6/18 延期会议<b>亲自出席但全程零发言</b>（记录中无任何 CC 发言条目）；6/19 增时服务会缺席。<a class="tag t-meeting" href="会议原始记录/487768979-共创营延期会议-2026-06-18.md" target="_blank">会议·487768979</a><a class="tag t-meeting" href="会议原始记录/155090131-共创营增时服务-2026-06-19.md" target="_blank">会议·155090131</a></li></ul></td>
   <td><ul>
     <li>提交增时服务变更说明（提案人，代表项目组）：延期 3 天（6/22→6/25），共创人支付工作人员延时 NT 1,250 为前置条件；文本载明「兵哥在得知延期情况后主动提出——共创人通过产出宣传内容从他那边以NT置换对应住宿费的支持（约1,800-2,000元资金池）……这不是我们主动向斌哥申请的费用」。<a class="tag t-meeting" href="会议原始记录/155090131-共创营增时服务-2026-06-19.md" target="_blank">会议·155090131</a><a class="tag t-proposal" href="提案原始文件/第三期共创营增时服务_项目变更说明.md" target="_blank">提案·增时变更说明</a></li>
@@ -634,7 +677,7 @@
 
 <!-- ======== 阶段 18 ======== -->
 <tr class="key-row">
-  <th><div class="stage-date">2026-07-27</div><div class="stage-name">断点三：第64期周会——CC 首次在会上明确 2000U；砚仁「只承诺上提案、没承诺一定给钱」；议题被搁置</div><div class="stage-meta"><div><span class="tag t-occ-nt">南塘DAO·64期周会</span></div><div>议题：S7-4 费用争议上会</div><div>要办：CC 首次会上明确 2000U；砚仁「只承诺上提案」；奇迹行者动议搁置</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/666064126-南塘DAO第64期周会.md" target="_blank">会议·666064126</a><a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a></div></th>
+  <th><div class="stage-date">2026-07-27</div><div class="stage-name">断点三：第64期周会——CC 首次在会上明确 2000U；砚仁「只承诺上提案、没承诺一定给钱」；议题被搁置</div><div class="stage-meta"><div><span class="tag t-occ-nt">南塘DAO·64期周会</span></div><div>议题：S7-4 费用争议上会</div><div>要办：CC 首次会上明确 2000U；砚仁「只承诺上提案」；奇迹行者动议搁置</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/666064126-南塘DAO第64期周会.md" target="_blank">会议·666064126</a><a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a><a class="tag t-meeting" href="会议纪要/666064126-南塘DAO-南塘DAO第64期周会-纪要.md" target="_blank">纪要·666064126</a></div></th>
   <td><ul>
     <li>出席（出席含 CC、砚仁、小白、跳跳、奇迹行者、谠泰、若曦、淅淅；虹阳缺席）。<a class="tag t-meeting" href="会议原始记录/666064126-南塘DAO第64期周会.md" target="_blank">会议·666064126</a></li>
     <li><b>2000U 首次明确出现在会议记录</b>：「跟着原来的报价走，是2000U」（L1533-1549），称报价当时已给但提案没上。<a class="tag t-meeting" href="会议原始记录/666064126-南塘DAO第64期周会.md" target="_blank">会议·666064126</a></li>
@@ -667,7 +710,7 @@
 
 <!-- ======== 阶段 19 ======== -->
 <tr class="key-row">
-  <th><div class="stage-date">2026-07-28</div><div class="stage-name">梳理会：双方时间线基本一致，约定找刘兵确认 5 ETH 是否含开发费；当夜 CC 在群内发长文陈述</div><div class="stage-meta"><div><span class="tag t-occ-proc">临时梳理会</span><span class="tag t-occ-wx">南塘DAO群（当夜长文）</span></div><div>议题：开发过程与验收梳理</div><div>要办：双方时间线对齐；约定找刘兵确认 5ETH 是否含开发费；当夜 CC 群长文</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/157824952-关于任务系统开发过程与验收的梳理.md" target="_blank">会议·157824952</a><a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a></div></th>
+  <th><div class="stage-date">2026-07-28</div><div class="stage-name">梳理会：双方时间线基本一致，约定找刘兵确认 5 ETH 是否含开发费；当夜 CC 在群内发长文陈述</div><div class="stage-meta"><div><span class="tag t-occ-proc">临时梳理会</span><span class="tag t-occ-wx">南塘DAO群（当夜长文）</span></div><div>议题：开发过程与验收梳理</div><div>要办：双方时间线对齐；约定找刘兵确认 5ETH 是否含开发费；当夜 CC 群长文</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/157824952-关于任务系统开发过程与验收的梳理.md" target="_blank">会议·157824952</a><a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a><a class="tag t-meeting" href="会议纪要/157824952-Dao南塘艺术共创营（第三期）-关于任务系统开发过程与验收的梳理-纪要.md" target="_blank">纪要·157824952</a></div></th>
   <td><ul>
     <li>旁听梳理会（会议仅砚仁出席、CC 旁听）。自述开工时点（L94-106）：5月1日前没开始做，真正开工是 5月20多号提供了带价格的 PRD 之后；5月11号时只搭了后端框架。<a class="tag t-meeting" href="会议原始记录/157824952-关于任务系统开发过程与验收的梳理.md" target="_blank">会议·157824952</a></li>
     <li>「5月份我提供报价了，我写PRD」，以为申请费用是包票（L472-482）；作为开发者社区运营岗想把第二期金额也争取回来（L655-661）。<a class="tag t-meeting" href="会议原始记录/157824952-关于任务系统开发过程与验收的梳理.md" target="_blank">会议·157824952</a></li>
@@ -694,7 +737,7 @@
 
 <!-- ======== 阶段 20 ======== -->
 <tr>
-  <th><div class="stage-date">2026-08-05</div><div class="stage-name">SEMI&ARTCAMP 会：砚仁展示其个人用 AI 重做的任务平台</div><div class="stage-meta"><div><span class="tag t-occ-dev">SEMI&amp;ARTCAMP（开发者社区）</span></div><div>议题：平台进展</div><div>要办：砚仁展示个人用 AI 重做的平台（原系统 bug 太多）</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/881443710-SEMI&ARTCAMP.md" target="_blank">会议·881443710</a></div></th>
+  <th><div class="stage-date">2026-08-05</div><div class="stage-name">SEMI&ARTCAMP 会：砚仁展示其个人用 AI 重做的任务平台</div><div class="stage-meta"><div><span class="tag t-occ-dev">SEMI&amp;ARTCAMP（开发者社区）</span></div><div>议题：平台进展</div><div>要办：砚仁展示个人用 AI 重做的平台（原系统 bug 太多）</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/881443710-SEMI&ARTCAMP.md" target="_blank">会议·881443710</a><a class="tag t-meeting" href="会议纪要/881443710-开发者社区-SEMIARTCAMP-纪要.md" target="_blank">纪要·881443710</a></div></th>
   <td><ul><li>缺席（仅野生蓝莓、砚仁出席）。<a class="tag t-meeting" href="会议原始记录/881443710-SEMI&ARTCAMP.md" target="_blank">会议·881443710</a></li></ul></td>
   <td><ul><li>出席；展示其个人用 AI 重做的任务平台：「最近在重做……因为后端有好多问题，bug太多了。我想把UI重新做一遍，然后把功能重新放上去」「天天修Bug，修得我想死，所以重新再做」；平台含多签、数据库、后端，前端准备重做。<a class="tag t-meeting" href="会议原始记录/881443710-SEMI&ARTCAMP.md" target="_blank">会议·881443710</a></li></ul></td>
   <td><span class="empty">—</span></td>
@@ -731,7 +774,7 @@
 
 <!-- ======== 阶段 22 ======== -->
 <tr class="key-row">
-  <th><div class="stage-date">2026-08-24</div><div class="stage-name">现状：「关于绩效」会分配 3 ETH；第67期周会——CC 主张 5 ETH 中应分离 2000U；聚焦动议 1:3 被否决，结论回到正式提案流程</div><div class="stage-meta"><div><span class="tag t-occ-nt">「关于绩效」会</span><span class="tag t-occ-nt">南塘DAO·67期周会</span></div><div>议题：3ETH 分配＋费用争议</div><div>要办：分配 3ETH；聚焦动议 1:3 被否决；结论回正式提案流程</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/973303461-关于绩效.md" target="_blank">会议·973303461</a><a class="tag t-meeting" href="会议原始记录/722270724-南塘DAO第67期周会.md" target="_blank">会议·722270724</a></div></th>
+  <th><div class="stage-date">2026-08-24</div><div class="stage-name">现状：「关于绩效」会分配 3 ETH；第67期周会——CC 主张 5 ETH 中应分离 2000U；聚焦动议 1:3 被否决，结论回到正式提案流程</div><div class="stage-meta"><div><span class="tag t-occ-nt">「关于绩效」会</span><span class="tag t-occ-nt">南塘DAO·67期周会</span></div><div>议题：3ETH 分配＋费用争议</div><div>要办：分配 3ETH；聚焦动议 1:3 被否决；结论回正式提案流程</div></div><div class="stage-src"><a class="tag t-meeting" href="会议原始记录/973303461-关于绩效.md" target="_blank">会议·973303461</a><a class="tag t-meeting" href="会议原始记录/722270724-南塘DAO第67期周会.md" target="_blank">会议·722270724</a><a class="tag t-meeting" href="会议纪要/973303461-Dao南塘艺术共创营（第三期）-关于绩效-纪要.md" target="_blank">纪要·973303461</a><a class="tag t-meeting" href="会议纪要/722270724-南塘DAO-南塘DAO第67期周会-纪要.md" target="_blank">纪要·722270724</a></div></th>
   <td><ul>
     <li>出席第67期周会（出席：CC、砚仁、小白、跳跳、奇迹行者、淅淅、木木曦；虹阳、谠泰缺席）；开场追 2000U：「一个月了没有任何推进」（L79-87）。<a class="tag t-meeting" href="会议原始记录/722270724-南塘DAO第67期周会.md" target="_blank">会议·722270724</a></li>
     <li>主张「5 ETH 打款时应已分离出本次 2000U」；「你没有任何一次说资金来源不确定……这次也确实付了，我这次有入账」（L1323-1331）。<a class="tag t-meeting" href="会议原始记录/722270724-南塘DAO第67期周会.md" target="_blank">会议·722270724</a></li>
@@ -806,7 +849,89 @@
     <a class="tag t-wechat" href="微信记录_weflow/semi_微信记录_20260829.md" target="_blank">semi群/开发者社区群（974 条，2026-05-24~08-20）·待核验</a>
   </p>
   <p><b>不作为事实来源的材料（参与者自述/辩解及衍生品，仅备查）：</b><code>争议文档与核验报告/</code> 下《关于任务系统2.0开发费用争议的事实说明_v3》《回应_给砚仁_2026-08-05》《砚仁视角_标准录音6-原文》《任务系统2.0开发费用争议-会议交叉核验报告》。本矩阵不引用其内容作为事实依据；凡其中事实与上述四类原始资料一致者，均已改为直接引用原始资料。</p>
-  <p><b>待补追溯缺口：</b>① 2026-03-24~27 刘兵停借合作社发言——本库微信归档自 5/1 起，原文未归档；② CC×砚仁 私聊原始记录——仅见于 CC 7/28 在南塘DAO群的转发；③ 刘兵对「5 ETH 是否含开发费」的确认——两次约定，无结果记录。</p>
+  <p><b>待补追溯缺口：</b>① 2026-03-24~27 刘兵停借合作社发言——本库微信归档自 5/1 起，原文未归档；② CC×砚仁 私聊原始记录（含 5/1–5/2 谈钱过程）——未归档，仅见于 CC 7/28 在南塘DAO群的转发与自述；③ 刘兵对「5 ETH 是否含开发费」的确认——7/20、7/28 两次约定，截至 8/29 归档无结果记录；④ 6/13 开发者社区「多签功能费用讨论」会议原文（编号 225440935）——不在砚仁 iMeeting 账号会议列表中，仅见 semi 群转发消息；⑤ 8/30「梳理【资金矛盾事实】」会议（编号 418159814）——iMeeting 上尚无纪要/发言记录文件生成。</p>
 </footer>
+
+<div id="evOverlay"><div id="evModal">
+  <button id="evClose" onclick="closeEv()">关闭 ✕</button>
+  <h3>行级证据（谁说的 · 在哪份文件 · 哪一行 · 原话）</h3>
+  <div class="evrow"><span class="evlab">出处类型</span><span id="evSrc"></span></div>
+  <div class="evrow"><span class="evlab">文件</span><span id="evFile"></span></div>
+  <div class="evrow"><span class="evlab">行号</span><span id="evLines"></span></div>
+  <div class="evrow"><span class="evlab">说话人</span><span id="evWho"></span></div>
+  <div id="evQuote"></div>
+  <div class="evlink"><a id="evLink" class="tag t-meeting" href="#" target="_blank">打开原文全文 ↗</a></div>
+</div></div>
+
+<script>
+/* 行级证据库：id -> {src, file, lines, who, quote} */
+const EV = {
+e01a:{src:'会议纪要（iMeeting）',file:'会议纪要/532194082-南塘DAO-南塘艺术共创营（第三期）筹备-纪要.md',lines:'L1442-1453',who:'富章（主动议人）',quote:'主动议（提议人：富章）：一、将南塘DAO的生活组中的三餐代购服务，特别是早餐代购服务，拆分为独立工作，开发一个核算工具。 1. 从现在开始，与开发者社区沟通，探讨在任务系统上实现该工具的可能性。 2. 如果开发者社区反响良好，由富章和跳跳负责推进，确保工具能够在离线或其他情况下使用。…… 处置：通过。票数：赞成 2 票，反对 0 票。赞成名单：砚仁（1票），蚊子（1票）。'},
+e01b:{src:'会议纪要（iMeeting）',file:'会议纪要/532194082-南塘DAO-南塘艺术共创营（第三期）筹备-纪要.md',lines:'L1403-1406（参会者表）',who:'智能秘书（记录）',quote:'参会者表：CC ｜ 南塘DAO成员 ｜ 缺席 ｜ 表决权1。—— CC 未出席 4/15 筹备会，全场动议与表决无 CC 参与。'},
+e01c:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/532194082-南塘艺术共创营（第三期）筹备-2026-04-15.md',lines:'L447-448',who:'智能秘书（动议记录）',quote:'一、将南塘DAO的生活组中的三餐代购服务，特别是早餐代购服务，拆分为独立工作，开发一个核算工具。 1. 从现在开始，与开发者社区沟通，探讨在任务系统上实现该工具的可能性。'},
+e02:{src:'微信群聊（南塘DAO群，CC 7/28 转发私聊，待核验）',file:'微信记录_weflow/南塘DAO_微信记录_20260829.md',lines:'L5921',who:'CC（乘月归，转发其与砚仁的私聊记录）',quote:'CC [2026-07-28 00:06:04] 转发聊天记录：乘月归: 我主要负责做这次更新的新需求／乘月归: 关于午餐和晚餐，像这种定量的周期性重复性的活动，我觉得也可以做那种活动包……（即 CC 自述 4/16 晚主动承接需求）'},
+e03a:{src:'提案原文（Notion）',file:'提案原始文件/S7-4任务系统平台2.0升级开发提案.md',lines:'L3-6',who:'砚仁（提案人）',quote:'提案人：砚仁／提案日期：2026年5月11日／项目名称：南塘社区任务系统平台升级开发（活动中心+商城+社区全局配置）／开发预算：2000 U（USDT，约合人民币14,000元）'},
+e03b:{src:'提案库元数据（Notion）',file:'提案原始文件/S7-4提案数据库元数据.md',lines:'L3-7',who:'Notion 提案库（系统记录）',quote:'创建者: Yunbiao Yang ｜ Tags: 意见征集 ｜ Name: S7-4 任务系统平台2.0升级开发提案 ｜ 状态: 未开始'},
+e03c:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/666064126-南塘DAO第64期周会.md',lines:'L1693',who:'CC（发言时间 7/27，自述内容为 4 月时的决定）',quote:'CC [7/27 第64期周会]：……然后，因为当时就有人说他们不想处理，只是说没有空，或者觉得可能没有资金，所以他们不想做。我说我可以做，我说没事，我可以先做。所以我就做了。'},
+e04a:{src:'微信群聊（南塘DAO群，待核验）',file:'微信记录_weflow/南塘DAO_微信记录_20260829.md',lines:'L12-153（2026-05-01 11:25 至 05-03 17:35 全部消息）',who:'群内全体成员',quote:'本群存档自 2026-05-01 11:25 起。5/1–5/3 三天群内消息全部为活动照片/表情/直播闲聊（「圆满结束」「正在剪辑ing」等）及 5/3 砚仁发送的两份 PDF（共创营三期项目提案、S6 投票权通知），无任何涉及开发费用、预算、付款的消息。—— CC×砚仁 5/1–5/2 的谈钱过程发生在私聊，未归档。'},
+e04b:{src:'微信群聊（南塘DAO群，待核验）',file:'微信记录_weflow/南塘DAO_微信记录_20260829.md',lines:'L5927',who:'CC [2026-07-28 02:00:08]',quote:'AI写的当然听不出为爱发电是句玩笑话啊。我后面还接了一句，干脆你送我一幅画算了，这不是拐着弯提醒你赶快和组织商议吗？'},
+e04c:{src:'微信群聊（南塘DAO群，待核验）',file:'微信记录_weflow/南塘DAO_微信记录_20260829.md',lines:'L5931',who:'CC [2026-07-28 02:06:34]',quote:'通篇看下来，你这不是想把这事形容成全是我主动推进的，还说了为爱发电那就是可以不要钱打白工。你不过半推半就地沟通需求，迫不得已地验收功能，想着我也没急着要钱就拉倒吧懒得上提案就这么赖帐吧？'},
+e05:{src:'会议纪要（iMeeting）',file:'会议纪要/141375786-南塘DAO-semi·X·iMeeing策略浅聊-纪要.md',lines:'L163-189（第一项议程·共创营事宜讨论）',who:'智能秘书（综合记录）',quote:'判断 2. 任务系统已经完成一半，还未试用。…… 建议 2. 联系CC了解任务系统的测试情况。—— 5/4 时点：任务系统约完成一半、未试用，下一步是找 CC 了解测试。'},
+e06a:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/194501374-第53期例会.md',lines:'L460（发言整理）',who:'砚仁（5/11 第53期例会·议程二）',quote:'目前，这个任务平台已经开发得差不多了，但还没有进行测试。明天下午3点，我会和CC、若曦以及其他感兴趣的同学一起参与测试。不过，我们仍然需要支付开发者的费用。我会写一个提案进行投票。关于经费的来源，我们会向相关部门申请，并且一部分会作为激励。'},
+e06b:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/194501374-第53期例会.md',lines:'L477',who:'虹阳（借用小白的手机发言）',quote:'啊，我不是小歪，我是红阳，然后刚好用到了小白的手机，就是刚好而已。跟斌哥聊了，他说任务平台的开发费用是通过南塘道这边走的。可能对接的话是跟开发者社区这边对接。后面是需要已经到了验收的环节了吗？'},
+e06c:{src:'提案原文（Notion）',file:'提案原始文件/S7-4任务系统平台2.0升级开发提案.md',lines:'L35-41',who:'砚仁（提案人）',quote:'三、财务预算 3.1 开发费用／3.2 资金来源：- 募捐 ／- 总计开发费用：14,000元／3.3 非现金支出：运营人员培训（约2小时）由砚仁及若曦者完成，费用每人500nt，共计1000nt。'},
+e07a:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/666064126-南塘DAO第64期周会.md',lines:'L1936-1943',who:'砚仁（7/27 第64期周会，解释 S7-4 为何未上投票）',quote:'我回答一下，为什么没有上提案，就是因为当时你们开发者社区的一个问题：到底怎么以什么样的需求提给你们？是拿到这边提需求，你们可以接，然后我们这边就不用付了；还是单独去走专项卡？这个当时是没有具体的说明的。问洪阳，洪阳说也不知道怎么给你。我记得是有这样的回答的。当时还单独给我们开个会，所以我就没上了。我记得是这样的。'},
+e07b:{src:'Snapshot 投票原始数据',file:'投票与提案记录/raw/snapshot四提案投票-原始API数据.json',lines:'全文（空间 s:ntdao.eth 提案列表）',who:'Snapshot 系统记录',quote:'南塘DAO Snapshot 空间（s:ntdao.eth）中 S7 季度提案仅有 S7-1《共创营结项报告》（2026-08-10 发起投票）；不存在 S7-4 的 Snapshot 投票页。S7-4 止于 Notion 提案库（状态：未开始，标签：意见征集）。'},
+e08a:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/493790347-周同步-2026-05-21.md',lines:'L180',who:'虹阳（开发者社区周同步·议程「南塘DAO的任务系统提案、明晰权责」）',quote:'开发系统的平台其实是从开发者社区里面分成了两个阶段。第一个阶段已经结清了，第二个阶段目前还没有验收……在这个基础之上，砚仁希望给第三期的艺术共创营再加一些功能。所以他去找了CC聊这件事情，然后CC也基于砚仁的一些需求做了一些开发。但是我目前没有参与这个过程。至于南塘DAO给CC提的这些开发需求，是走南塘道的国库啊……'},
+e08b:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/493790347-周同步-2026-05-21.md',lines:'L285、L288',who:'虹阳',quote:'砚仁基于南唐第三期共创营的场景需求，直接去找了CC，做一些新的功能开发……（L285）／事情的第二点是关于 CC 新开发的项目激励如何进行，是进入国库，还是像我们开发任务系统第二阶段一样，从开发者这边进行。……创赢新增功能的范围算是怎么样的？是走南塘道国库，还是走开发者社区的国库？（L288）'},
+e08c:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/493790347-周同步-2026-05-21.md',lines:'L332-338',who:'CC',quote:'我有一点尴尬，我翻了一下记录。确实是在四月十五号的时候，在开发者社区提到了一点，就是任务系统要新增功能，但后面没有同步到信息。所以到现在这个阶段，我不知道应该怎么走……（发言整理 L338：……但之后并没有跟进信息，所以现在我不太清楚应该如何继续推进。）'},
+e08d:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/493790347-周同步-2026-05-21.md',lines:'L359-364',who:'虹阳',quote:'之前我跟斌哥沟通的信息是，任务系统如果算作艺术共创营的一个部分，他说会根据第三期艺术共创营的效果来决定是否愿意去做这个付费。所以这两件事情是相关联的，好像绑在一起的。但上面这个信息是之前跟他聊的一个口头上的信息，也没有很明确。（发言整理 L364：……不过，上述信息只是之前和他聊的口头信息，并没有很明确。）'},
+e09a:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/737937936-任务系统之活动功能-2026-05-22.md',lines:'L337',who:'CC（5/22 任务系统之活动功能会议）',quote:'说实话，如果有人愿意做这个，可以去做。我已经在这个项目上花了十几天，不想再投入更多的沉没成本。我有点生气，因为一开始大家都谈好了，流程也确定了，应该可以顺利进行。然而现在，我一分钱都没拿到，甚至还有可能是空头支票。事情进展不顺利，尽管我已经按照整个流程来操作。'},
+e09b:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/737937936-任务系统之活动功能-2026-05-22.md',lines:'L761',who:'砚仁（5/22 任务系统之活动功能会议）',quote:'好的，我的消息来源是剑桥告诉我的。剑桥明确表示，如果社区有需求，是可以申请的，向开发者社区申请。如果是吉利的话，可以向刘斌那边申请。这是定向的。其他的我不清楚，我没有跟刘斌那边核对。这确实是我的失误，但是我是让CC去找剑桥的。'},
+e10a:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/126684611-周同步.md',lines:'L1829-1839（第五项议程：任务系统使用问题反馈）',who:'野生蓝莓（虹阳，6/11 开发者社区周同步）',quote:'我这边就是今天上午，跟艺术共创营的使用者们一起做了任务系统这个功能的反馈……因为任务系统也是之前在开发者社区呃过的，现在没有没有没有给二期的费用。呃，问题是摆着的。至于怎么解决，呃，我也不知道。（发言整理 L1837：……另外，任务系统之前在开发者社区里做过，但目前没有给二期的费用，问题是摆着的。）'},
+e10b:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/126684611-周同步.md',lines:'L1844-1859',who:'CC（6/11 开发者社区周同步）',quote:'……我如果能快速解决的，我会直接解决；一些不太明确的流程，我会同步告知。至于涉及新功能的扩展，那可能还是需要按相应流程走、走项目立项。（L1847-1848 原文：……那可能就还是同样的需要走／走相应的流程和项目来立项。）'},
+e11a:{src:'微信群聊（semi群，待核验）',file:'微信记录_weflow/semi_微信记录_20260829.md',lines:'L4169-4179',who:'向虹阳（虹阳）[2026-06-13 16:06:34]',quote:'会议名称：多签功能费用讨论……如果今天的会议决议生效的话，还是按照原来计划进行支付，可以签一下这个交易，其中2500U是开发费用，800U是代码审核费用，按照发起当天的价格的ETH。'},
+e11b:{src:'微信群聊（semi群，待核验）',file:'微信记录_weflow/semi_微信记录_20260829.md',lines:'L4557',who:'小白（吴清钦）[2026-06-14 13:41:03]',quote:'可以的，按照会议通过的投票，我们需要把这笔交易拆分成800u和2500u发起，注明一笔重复开发费用和一笔审核费用，然后我签署完再移交权限。'},
+e12a:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/632386385-结项报告核定-2026-07-04.md',lines:'L996-1031',who:'砚仁（7/4 共创营结项报告核定会）',quote:'砚仁：嗯，好，我们商定外包的费用，关于CC的工作量，我们按800去算工作，费用结算。（L996）／主动议：一、同意外包费用结算方式：关于 CC 工作量按 800 元进行核算。（L999）／砚仁提修正案：第二个删掉，把CC跟我修改成淅淅。（L1023）请删除第条例的第二项，并将第一项中的「CC」修改为「淅淅」。（L1031）—— 修正案获默认一致同意：外包费 800 元条目由 CC 改为淅淅。'},
+e12b:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/632386385-结项报告核定-2026-07-04.md',lines:'L258',who:'砚仁（结项报告·致谢部分）',quote:'感谢：全体共创人的投入与信任；富章老师的议事规则支持；标哥、高琳姐及合作社的在地协作；CC及开发者社区对NT系统的持续维护；以及项目组朝林、小红、若曦的全程付出。'},
+e13a:{src:'微信群聊（南塘DAO群，待核验）',file:'微信记录_weflow/南塘DAO_微信记录_20260829.md',lines:'L4006',who:'刘兵 [2026-07-20 22:22:15]',quote:'因为艺术共创营做的有成效，推进了南塘豆、semi、imeeting、bai任务系统在南塘线下活动中的使用，所以资助南塘DAO，5个eth。由南塘DAO按照自身的运行情况，自主决定如何使用。'},
+e13b:{src:'微信群聊（南塘DAO群，待核验）',file:'微信记录_weflow/南塘DAO_微信记录_20260829.md',lines:'L4043',who:'刘兵 [2026-07-20 22:27:46]',quote:'我不参加南塘DAO的会议，就是为了让南塘DAO的伙伴们自主决策。不是以我说的为准。'},
+e13c:{src:'微信群聊（南塘DAO群，待核验）',file:'微信记录_weflow/南塘DAO_微信记录_20260829.md',lines:'L4092',who:'CC [2026-07-20 22:52:19]',quote:'之前bai系统第三期的开发也是由于资金没有到位，一直都是开发者为爱发电，那正好这次把款项结一下。—— 刘兵 22:22 宣布后 30 分钟，CC 首次在南塘DAO群公开提出结款。'},
+e13d:{src:'会议纪要（iMeeting）',file:'会议纪要/139021728-南塘DAO-南塘DAO第62期周会-纪要.md',lines:'L102-104（参会者表）、L233、L270',who:'智能秘书（7/20 第62期周会）',quote:'参会者表：CC ｜ 南塘DAO成员 ｜ 缺席。／第三项议程：3. 南塘DAO当前财务结算方案。／提问：这笔款项在财务结算方案中应被确认其性质为「奖励」还是「投资款」？需如何由相关方明确该性质。—— 5 ETH 到账当晚的周会未指明款项含开发费，CC 未出席该会。'},
+e14a:{src:'会议纪要（iMeeting）',file:'会议纪要/666064126-南塘DAO-南塘DAO第64期周会-纪要.md',lines:'L268',who:'智能秘书（7/27 第64期周会）',quote:'第三项议程 · discussion_item：3. 任务系统平台2.0升级开发提案。—— 砚仁将 S7-4 列入议程；CC 出席该会（参会者表 L102-105：CC 亲自出席）。'},
+e14b:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/666064126-南塘DAO第64期周会.md',lines:'L1534-1543',who:'CC（7/27 第64期周会）',quote:'是的，应该是在之前工商银（共创营）之前吧，6月初、5月底的时候。当时嫣然（砚仁）和剑桥跟我说，工商银它有这么一个第三阶段的需求……后面又升级了一些，比如说多人周期性任务的需求，反正我都做了，然后当时报价也给了……这次就重新上了一下，然后还是跟着原来的报价走，是 2000U。'},
+e14c:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/666064126-南塘DAO第64期周会.md',lines:'L2329-2336',who:'砚仁（7/27 第64期周会）',quote:'我承诺你的，只是承诺是上提案。具体能不能给我，从来没有说过这个能不能。我一直说的是要上提案……这个提案肯定是如果通过了，肯定是给你的。我可没承诺过，就是我要一定要给你。你包括你一开始问我说啊，由我来自己、你出费用，我都没承诺过啊。'},
+e14d:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/666064126-南塘DAO第64期周会.md',lines:'L2389',who:'奇迹行者（7/27 第64期周会）',quote:'嗯，我感觉如果这个问题还没有进入那个解决方案的环节，要不先搁置一下，然后时间比较晚了，我感觉。—— 该议题未进入表决即随会议结束。'},
+e15a:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/157824952-关于任务系统开发过程与验收的梳理.md',lines:'L514',who:'CC（7/28 梳理会）',quote:'而我认为就是刘斌他打的那个 5 ETH 应该是有这次开发者的费用了。'},
+e15b:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/157824952-关于任务系统开发过程与验收的梳理.md',lines:'L607-610、L639-644、L680-685',who:'砚仁（7/28 梳理会）',quote:'这个我找富章老师聊一下吧。我觉得这个我们已经谈清楚了，只要一致对外就可以了……如果是刘斌确认下来的话，那我们就对外说：5 粒贴纸（5ETH）里面刘冰（刘斌）确实是付了这个开发者社区的（费用）……（L639-644）我可以找我们一起去找刘斌，也可以单独找刘斌，但我得先跟富章老师商量一下这个事情怎么做。'},
+e16a:{src:'微信群聊（南塘DAO群，待核验）',file:'微信记录_weflow/南塘DAO_微信记录_20260829.md',lines:'L6466-6468',who:'小白（吴清钦）[2026-08-10 17:46-17:55]、砚仁',quote:'小白：项目内部不清楚，南塘DAO按原通过提案在预留着这部分资金。／砚仁：@577 我的结项报告，什么时候上投票／小白：今晚确定一下，是要按新的投票方案上还是旧的，之前就对这个问题有过分歧。'},
+e16b:{src:'微信群聊（南塘DAO群，待核验）',file:'微信记录_weflow/南塘DAO_微信记录_20260829.md',lines:'L6480',who:'小白（吴清钦）[2026-08-12 21:41:45]',quote:'@砚仁 @杨朝林 @阿兰那行者 @木木曦 @淅淅 @CC @野生蓝莓 S7-1提案明晚20:30到期，请已mint票权的伙伴积极参与投票。'},
+e16c:{src:'Snapshot 投票',file:'投票与提案记录/S7-1共创营结项报告_8-10(通过).md',lines:'全文',who:'Snapshot 系统记录',quote:'S7-1《Dao南塘艺术共创营（第三期）结项报告》于 8/10–8/13 在 Snapshot 投票并通过——S7 季度第一笔、也是唯一一笔上投票的提案；S7-4 始终未进入投票。',link:'https://snapshot.box/#/s:ntdao.eth/proposal/0x5e1a4fff545931860ef98f2fc83393e584350dfc11438ddc168636a43082b6b1'},
+e17a:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/722270724-南塘DAO第67期周会.md',lines:'L153-160',who:'小白（8/24 第67期周会）',quote:'针对CC刚刚说的那个内容，虽然第三期确实是呃，根据验人（砚仁）的需求，是有定制的。但实际上，在南塘倒是没留下任何记录。关于这次开发的内容，所以的话，南塘道肯定是不会从国库拨付资金去支付这笔费用的。……另外，关于他项目内的资金怎么划分，南塘豆管不着。根据当初的提案，是拨付60%给到他们那边，也就是说三个ETH已经拨付给他们了。'},
+e17b:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/722270724-南塘DAO第67期周会.md',lines:'L1479-1486',who:'小白（8/24 第67期周会）',quote:'这个需要刘云哥（刘斌）那边给出明确的答复才有依据。明确答复是包含的话，那么已拨付给项目那边的60%，在这次支付里面，项目收到的那60%要支付这2000U的60%，然后南塘DAO这边支付40%。……我付60%给你们，是让你们把成本先支付完，而不是说拨付给你们60%之后，你们还要再承担这笔钱。这样不合理。'},
+e17c:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/722270724-南塘DAO第67期周会.md',lines:'L1324-1331',who:'CC（8/24 第67期周会）',quote:'你说的资金可以通过男朋友（南塘DAO）给，难道不是一种承诺吗？……你跟我说的意思就是说有渠道。这个渠道那我肯定是默……就是说这个会付啊。这次也确实付了呀。我这次有入账啊。（L1331：而且这次也确实付了，我这边这次也有入账。）'},
+e17d:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/722270724-南塘DAO第67期周会.md',lines:'L1417-1425',who:'智能秘书／智能主持人（表决记录）',quote:'赞成1票：CC(1票）。反对3票：xiaobai(1票）、木木曦(1票）、淅淅(1票）。……反对方获胜，主动议被否决。（该动议为 CC 提出的聚焦议题动议：仅讨论砚仁与南塘DAO的关系、停止混入无关议题。）'},
+e17e:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/722270724-南塘DAO第67期周会.md',lines:'L1441',who:'淅淅（8/24 第67期周会）',quote:'站在我个人的角度上来讲，我会认为这个钱最后一定要出。如果真的提案没有通过的话，我肯定也不可能说让燕人（砚仁）去出。我就觉得可以由三期的项目去出。因为这个事情是做完开发之后，它的实际受益人是三期的共创人……我认为可以给予CC哪怕不是2000U，但也是一定程度的资金追偿，因为谁受益谁负责嘛。'},
+e17f:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/722270724-南塘DAO第67期周会.md',lines:'L973-976',who:'小白（8/24 第67期周会）',quote:'如果要把这件事变成「南塘豆」的事情，就按正式流程走：先放到 Notion 上面，征集意见，然后确定一个议程，在我们正式的周会上过会讨论；讨论后再进行公示，公示完再上投票。我们就按流程来走。'},
+e17g:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/722270724-南塘DAO第67期周会.md',lines:'L1650-1657',who:'砚仁（8/24 第67期周会）',quote:'先按流程走，走完什么讨论什么。我也没办法对这件事情说。从私交上，我很愿意积极解决这样的事情，但是从在这里的话，没必要谈这个，我也只能按照流程来走。……我的相关提案会按流程征集意见，然后上周会、再公示投票，走这样的流程。'}
+};
+
+function openEv(id){
+  const e = EV[id]; if(!e) return;
+  document.getElementById('evSrc').textContent = e.src;
+  const f = document.getElementById('evFile'); f.textContent = e.file;
+  document.getElementById('evLines').textContent = e.lines;
+  document.getElementById('evWho').textContent = e.who;
+  document.getElementById('evQuote').textContent = e.quote;
+  const a = document.getElementById('evLink'); a.href = e.link || e.file;
+  document.getElementById('evOverlay').style.display = 'block';
+}
+function closeEv(){ document.getElementById('evOverlay').style.display = 'none'; }
+document.addEventListener('click', function(ev){
+  const b = ev.target.closest('.evbtn'); if(b){ openEv(b.dataset.ev); return; }
+  if(ev.target.id === 'evOverlay') closeEv();
+});
+document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') closeEv(); });
+</script>
 </body>
 </html>
