@@ -38,12 +38,14 @@
   .resp{color:#ffb4ae}
   .who{color:var(--accent)}
   /* 矩阵 */
-  .wrap{overflow-x:auto;margin:18px 0 30px;padding:0 32px}
+  .wrap{overflow:auto;margin:18px 0 30px;padding:0 32px}
   table{border-collapse:separate;border-spacing:0;min-width:2000px;width:100%}
   th,td{border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top;padding:9px 10px;background:var(--panel)}
+  /* 冻结首行 + 首列：thead th 顶部固定；tbody th 左侧固定；左上角 th 同时顶部+左侧固定 */
   thead th{position:sticky;top:0;z-index:5;background:var(--panel2);font-size:13px;text-align:center;min-width:150px}
-  thead th:first-child{min-width:240px;text-align:left}
+  thead th:first-child{position:sticky;left:0;top:0;z-index:6;min-width:240px;text-align:left}
   tbody th{position:sticky;left:0;z-index:4;background:var(--panel2);text-align:left;font-weight:normal;min-width:240px}
+  tbody tr:hover th{background:#253047}
   .stage-date{font-weight:bold;color:var(--accent);font-size:13px}
   .stage-name{font-size:12.5px;color:var(--txt);margin-top:2px}
   .stage-src{margin-top:4px}
@@ -57,6 +59,29 @@
   footer table{min-width:0;font-size:12px}
   footer th,footer td{padding:5px 8px}
   mark{background:#6b5a1e;color:#ffe9a8;padding:0 2px;border-radius:2px}
+  /* 手机端适配：缩小首列与字号，保证横向滚动时首列不独占屏幕 */
+  @media (max-width:768px){
+    body{font-size:13px}
+    header{padding:18px 12px 10px}
+    h1{font-size:18px}
+    h2{font-size:15px}
+    .box{margin:12px 12px;padding:12px 14px}
+    .flow{margin:6px 12px 0}
+    .wrap{padding:0 8px}
+    table{min-width:1200px}
+    th,td{padding:6px 7px}
+    thead th{min-width:70px;font-size:10px;padding:6px 3px}
+    thead th:first-child{min-width:110px;max-width:130px}
+    tbody th{min-width:110px;max-width:130px;z-index:4}
+    .person-role{display:none}
+    .stage-date{font-size:11px}
+    .stage-name{font-size:11px}
+    .stage-src{margin-top:2px}
+    .tag{font-size:9px;padding:1px 4px}
+    td ul{padding-left:12px}
+    td li{margin-bottom:3px;font-size:12px}
+    footer{padding:0 12px 20px}
+  }
 </style>
 </head>
 <body>
