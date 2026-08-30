@@ -101,7 +101,12 @@
     td li{margin-bottom:3px;font-size:12px}
     .evbtn{font-size:9px;padding:0 4px;margin-left:2px}
     #evModal{padding:12px 14px;margin:8px auto}
+    .tmtable th,.tmtable td{font-size:10.5px}
   }
+  .tmtable{width:100%;border-collapse:collapse;font-size:12px}
+  .tmtable th{position:sticky;top:0;background:#eef4f0;text-align:left;padding:5px 8px;border:1px solid #d5ddd8;font-size:12px}
+  .tmtable td{padding:6px 8px;border:1px solid #e2e8e4;vertical-align:top;line-height:1.6}
+  .tmtable tr.key-row td{background:#fdf6ec}
 </style>
 </head>
 <body>
@@ -117,7 +122,7 @@
 <div class="box">
   <h2>事情背景与组织关系（先看这个）</h2>
   <ul>
-    <li><b>任务系统是什么：</b>南塘DAO 的任务系统（NT 积分任务平台）。</li>
+    <li><b>任务系统是什么：</b>南塘DAO 的任务系统（NT 积分任务平台）。<b>起源早于共创营三期约四个月</b>：开发者社区团队约 2025 年 12 月初启动开发（1/13 腾讯会议：「从开始说要做那个任务系统，大概是 12 月初」<button class="evbtn" data-ev="t02">证</button>），里程碑制：一期 3000U 已结清、二期 5000U 未结（2/19 腾讯会议<button class="evbtn" data-ev="t07">证</button>；6/11 iMeeting 周同步<button class="evbtn" data-ev="e10a">证</button>）。</li>
     <li><b>2.0 升级是什么：</b>为第三期共创营承接的新需求——起源于 4/15 动议的「三餐代购核算工具可能性」，后扩展为活动功能、周期性任务等；开发者社区 CC 承接开发，预算 2000U（S7-4 提案，落款 2026-05-11，提案库标签「意见征集」、状态「未开始」<button class="evbtn" data-ev="e03b">证</button>）。
       <a class="tag t-meeting" href="会议原始记录/532194082-南塘艺术共创营（第三期）筹备-2026-04-15.md" target="_blank">会议·532194082</a>
       <a class="tag t-proposal" href="提案原始文件/S7-4任务系统平台2.0升级开发提案.md" target="_blank">提案·S7-4</a></li>
@@ -146,6 +151,7 @@
     <li><b>微信群聊消息</b>——每条均注明来源群聊（<b>semi 群</b>=开发者社区群 / <b>南塘DAO 群</b>），点击标签打开 <code>微信记录_weflow/</code> 下该群的完整原始聊天记录。微信记录来自 WeFlow 解密本地库，<b>正确性待核验</b>，一律标注「待核验」。CC 与砚仁的私聊内容未见原始存档，仅见于 CC 于 7/28 在南塘DAO 群转发的记录，标注为「微信·南塘DAO群（CC 转发私聊）·待核验」。</li>
     <li><b>提案内容（Notion）</b>——点击标签打开 <code>提案原始文件/</code> 下的提案原文（S7-4 经南塘DAO Notion 提案库机器人连接调取全文）。</li>
     <li><b>Snapshot 投票</b>——点击标签跳转 snapshot.box 上该提案的投票页（空间 s:ntdao.eth）；本地原始 API 数据存于 <code>投票与提案记录/raw/</code>。</li>
+    <li><b>腾讯会议转写（补充来源）</b>——17 场 CC 参与且涉及任务平台的腾讯会议逐字稿，存于 <code>腾讯会议 cc参与/</code>（含 <code>会议索引.md</code>）。按提供方要求暂标注为「开发者社区组织的工作会议」；每场在文末专节列出<b>参会人、会议主题、任务平台相关发言（逐字+行号）、所讨论的是任务平台哪个阶段</b>。</li>
   </ol>
   <b>不作为事实来源的材料：</b>参与者为自己陈述/辩解的材料及衍生观点文档——《关于任务系统2.0开发费用争议的事实说明_v3》《回应_给砚仁_2026-08-05》《砚仁视角_标准录音6-原文》《任务系统2.0开发费用争议-会议交叉核验报告》——<b>一律不作为本矩阵的事实依据</b>（仅列于文末备查）。<br>
   <b>别名对照（事实）：</b>虹阳=野生蓝莓=弘扬/洪阳（谐音同一人）；刘兵=刘斌/斌哥/兵哥（投资人）；淑惠=和光同尘（iMeeting 显示名）；砚仁=他山之石（Snapshot 昵称）=苏砚仁=Yunbiao Yang（Notion 创建人）=他山之石斋（微信）；CC=乘月归（微信）；小白=xiaobai=577（微信）。
@@ -606,6 +612,25 @@
   <td><ul><li>6/11 周同步出席；被定为社区维护岗。<a class="tag t-meeting" href="会议原始记录/126684611-周同步.md" target="_blank">会议·126684611</a></li></ul></td>
 </tr>
 
+<!-- ======== 阶段 14.5（插入：6/1 腾讯会议三场） ======== -->
+<tr>
+  <th><div class="stage-date">2026-06-01</div><div class="stage-name">腾讯会议三场（麦田预定的会议）：任务系统拟从开发者社区拆分为独立项目、以 12000 总报价向刘兵重新申请资金；报价分「之前的 cover＋新增功能（含砚仁提的需求）」两部分</div><div class="stage-meta"><div><span class="tag t-occ-dev">腾讯会议·开发者社区工作会</span></div><div>议题：任务系统与开发者社区拆分＋重新报价</div><div>要办：任务系统单独立项向刘兵申请资金；CC 负责整理已开发/待开发任务与报价表（当晚/次日给初稿）</div></div><div class="stage-src"><a class="tag t-meeting" href="腾讯会议 cc参与/189693647-麦田预定的会议-2026-06-01.md" target="_blank">腾讯·189693647（17:51）</a><a class="tag t-meeting" href="腾讯会议 cc参与/658662284-麦田预定的会议-2026-06-01.md" target="_blank">腾讯·658662284（20:00）</a><a class="tag t-meeting" href="腾讯会议 cc参与/518234837-麦田预定的会议-2026-06-01.md" target="_blank">腾讯·518234837（16:01 闲聊）</a></div></th>
+  <td><ul>
+    <li>出席 17:51 场（与 xboring、小白）。xboring 传达与刘兵沟通后的安排：任务系统与开发者社区拆开、单独立项向刘兵申请资金<button class="evbtn" data-ev="t14">证</button>；CC 接受「把之前的付掉」的安排并问「就重新来把之前的付掉是吗？」（L83）。</li>
+    <li>CC 自述活动功能由来：「原来不就是要做活动吗，但是没有做，然后艺人（按语境为砚仁）正好提出要做活动了，所以我就做了」<button class="evbtn" data-ev="t16">证</button>；报价按「之前的 cover＋新增功能（含砚仁提的需求）」两部分<button class="evbtn" data-ev="t15">证</button>；CC 认为不必物理拆社区：「现在已经支持多社区嘛，就再让系统管理员再多开个社区就好了」（L115）。</li>
+    <li>16:01 场（与舒云展等人未到场的闲聊）：舒云展问「你那个多签的钱拿到了吗？」CC 答「没有啊」<button class="evbtn" data-ev="t18">证</button>。</li>
+  </ul></td>
+  <td><ul><li>未出席；被 xboring 列为「新增的功能」需求的提出方：「第二部分是新增的功能，包括……燕人（按语境为砚仁）他提的那些需求」<button class="evbtn" data-ev="t15">证</button>。</li></ul></td>
+  <td><ul><li>未出席；xboring 称「刘斌那边会出一部分，然后另一部分按照需求方……以南塘的名义……南塘那边会去做一部分的支付」；报价将参照 NFT 报价单「做一些上浮」后与刘兵核对<button class="evbtn" data-ev="t17">证</button>。</li></ul></td>
+  <td><ul><li>出席 17:51 场（中途加入，L79「诶，小白进来了」）；问 xboring：「他就针对这一个，他会愿意给多少的经费啊，就是包括跟你后续的维护以及打造这个流程的所有资金吗？」（L121）。</li></ul></td>
+  <td><ul><li>未确认出席；20:00 场中 xboring 以「红阳/胡阳」（转写谐音，是否与虹阳为同一人无从判定）称呼一位与会者，并对其说「把你那边先独立拆出，先拆到 cc 和小白那边去了」（L107）。</li></ul></td>
+  <td><span class="empty">—</span></td>
+  <td><span class="empty">—</span></td>
+  <td><span class="empty">—</span></td>
+  <td><span class="empty">—</span></td>
+  <td><ul><li>出席 20:00 场；xboring 安排分工：对外需求梳理「先让 cc 那边去跟」、服务稳定维护「放到院长这边」（按语境为云展）、代码审核合并「放到江那边」；CC 当晚/次日交报价表初稿<button class="evbtn" data-ev="t20">证</button>。</li></ul></td>
+</tr>
+
 <!-- ======== 阶段 15 ======== -->
 <tr>
   <th><div class="stage-date">2026-06-05 ~ 06-25</div><div class="stage-name">第三期共创营举办，任务系统实际运行（555 条任务记录、24,293 NT 流转）</div><div class="stage-meta"><div><span class="tag t-occ-camp">共创营举办</span><span class="tag t-occ-wx">群聊＋结项</span></div><div>议题：共创营实战运行</div><div>要办：任务系统投入使用：555 条任务、24,293 NT 流转</div></div><div class="stage-src"><a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">微信·南塘DAO群·待核验</a><a class="tag t-vote" href="https://snapshot.box/#/s:ntdao.eth/proposal/0x5e1a4fff545931860ef98f2fc83393e584350dfc11438ddc168636a43082b6b1" target="_blank">Snapshot·S7-1结项报告</a></div></th>
@@ -850,6 +875,47 @@
 </table>
 </div>
 
+<div class="box">
+  <h2>腾讯会议补充：任务平台相关讨论 17 场（暂按提供方定义标注为「开发者社区组织的工作会议」）</h2>
+  <p>以下 17 场为 CC 参与或涉及任务平台的腾讯会议逐字稿（提供方筛选）。<b>转写说明（事实）</b>：腾讯会议自动转写存在明显谐音误写——「南南/南航/南昌」=南塘、「艺人/燕人」按语境疑为「砚仁」、「菲米/费米/C米/三米」按语境疑为 semi/Cimi 钱包、「牛逼/牛斌」疑为「刘斌（刘兵）」；引用一律按原文呈现，存疑处在括号内注明。每场列出：<b>参会人、主题、任务平台相关发言（逐字+行号，点击 证 弹窗看原话）、所讨论的是任务平台哪个阶段</b>。阶段划分依据见本节末「任务平台的阶段与归属」。</p>
+  <table class="tmtable">
+    <thead><tr><th style="min-width:120px">日期 / 会议</th><th style="min-width:150px">参会人（发言者）</th><th style="min-width:170px">主题</th><th>任务平台相关内容（谁说的·原话·行号）</th><th style="min-width:110px">阶段判定</th></tr></thead>
+    <tbody>
+    <tr><td>2026-01-07<br><a class="tag t-meeting" href="腾讯会议 cc参与/525975953-麦田预定的会议-2026-01-07.md" target="_blank">腾讯·525975953</a></td><td>苏砚仁（砚仁）、淅淅、沙正轩、若曦 等 14 人；<b>CC 未参会</b></td><td>共创营开营说明会（日程安排）</td><td>仅介绍共创营内 NT 发放规则（苏砚仁 L187「上课上个两个小时就会给你们发 10nt……一些小任务会发给你们」），<b>无任务系统开发内容</b>。</td><td>与任务系统开发无关（共创营运营语境）</td></tr>
+    <tr><td>2026-01-08<br><a class="tag t-meeting" href="腾讯会议 cc参与/194395537-麦田预定的会议-2026-01-08.md" target="_blank">腾讯·194395537</a></td><td>xboring、Siddhartha、舒云展、<b>乘月归（CC）</b></td><td>任务系统进度会（备注功能、登录 bug、第八个功能）</td><td>xboring「任务发布这边……这两天是有在做第八个是吧？」Siddhartha「是那个 CC 他在做……他在 debug」<button class="evbtn" data-ev="t01">证</button>；Siddhartha「我们做的那个任务系统是单个社区的嘛」（L167）。CC 仅谈登录验证码技术细节（L91/103/121）。</td><td><b>阶段 B·二期开发中</b>（无共创营三期元素，依据 L75）</td></tr>
+    <tr><td>2026-01-13<br><a class="tag t-meeting" href="腾讯会议 cc参与/128726321-麦田预定的会议-2026-01-13.md" target="_blank">腾讯·128726321</a></td><td>Siddhartha、xboring、小白；<b>CC 未参会（被讨论）</b></td><td>任务系统开发模式与费用安排讨论</td><td>「从开始说要做那个任务系统，大概是 12 月初」（L85）<button class="evbtn" data-ev="t02">证</button>；小白「我跟 cc 说的是请他帮个忙，我没有跟他聊激励」、Siddhartha「就纯义务帮忙是吧？」小白「是……如果你有预算的话可以跟他聊」<button class="evbtn" data-ev="t03">证</button>；xboring：项目费用计划约 5000U、维护费独立、Siddhartha 与展子每月 2500 基本薪资、CC 费用「你们自己内部协商」<button class="evbtn" data-ev="t04">证</button>。</td><td><b>阶段 A→B 之交</b>（里程碑/费用管理讨论）</td></tr>
+    <tr><td>2026-01-14<br><a class="tag t-meeting" href="腾讯会议 cc参与/223269658-麦田预定的会议-2026-01-14.md" target="_blank">腾讯·223269658</a></td><td>jiang、Siddhartha、舒云展、xboring；<b>CC 未参会</b></td><td>任务发布与钱包（数字身份）接口联通</td><td>「他们在做那个艺术共创营」（L117）——1 月已有进行中的艺术共创营（非三期）；「任务完成之后积分发布可以跳转到钱包」（L141）<button class="evbtn" data-ev="t05">证</button>；jiang 承诺周五前交付 API（L153）。</td><td><b>阶段 B·二期</b>（共创营语境=当时进行中的共创营，非三期 2.0）</td></tr>
+    <tr><td>2026-01-16<br><a class="tag t-meeting" href="腾讯会议 cc参与/412941944-麦田预定的会议-2026-01-16.md" target="_blank">腾讯·412941944</a></td><td><b>乘月归（CC，主发言人）</b>、Siddhartha、舒云展</td><td>登录/注册功能联调</td><td>CC 逐条讨论登录逻辑：「最最重要的现在是任务发布的逻辑」（L111）、「忘记密码还没做」（L59）、部署到 fly（L195/201）。无费用内容。</td><td><b>阶段 B·二期开发中</b></td></tr>
+    <tr><td>2026-02-12<br><a class="tag t-meeting" href="腾讯会议 cc参与/137955547-麦田预定的会议-2026-02-12.md" target="_blank">腾讯·137955547</a></td><td>Siddhartha、舒云展、jiang；<b>CC 未参会（被提及）</b></td><td>开发进度同步（测试版、bug、验收与激励）</td><td>舒云展「那像我和 CC 开发的话，我们要展示一下这周都做了什么吗？」（L43）；Siddhartha「有一些 bug 可能 cc 还在改」（L95）<button class="evbtn" data-ev="t06">证</button>；jiang 问自己开发部分怎么验收（L139）。</td><td><b>阶段 B·二期开发中</b></td></tr>
+    <tr><td>2026-02-19<br><a class="tag t-meeting" href="腾讯会议 cc参与/203288069-麦田预定的会议-2026-02-19.md" target="_blank">腾讯·203288069</a></td><td>Siddhartha、jiang、xboring、舒云展、<b>乘月归（CC，大量发言）</b></td><td>开发激励分配：jiang 的 2800 是否从任务系统二期 5000U 预算支出</td><td>Siddhartha「第一期是 3000，然后第二期是 5000U……第一期 3000 已经发完了」<button class="evbtn" data-ev="t07">证</button>；「展子跟 cc 他们要做，就是那个任务系统的」（L69）<button class="evbtn" data-ev="t08">证</button>；「找刘斌要新的，好像被否定了」（L75）<button class="evbtn" data-ev="t10">证</button>；CC 反对从 5000U 中支出：「为什么会在我们任务系统里扣呢」（L113）、「任务系统像我们的 8000U 是拨在 task 里头的」<button class="evbtn" data-ev="t09">证</button>。</td><td><b>阶段 B·二期</b>（预算激励归属之争）</td></tr>
+    <tr><td>2026-02-26<br><a class="tag t-meeting" href="腾讯会议 cc参与/900852911-麦田预定的会议-2026-02-26.md" target="_blank">腾讯·900852911</a></td><td>Siddhartha、舒云展、xboring、<b>乘月归（CC）</b>、jiang</td><td>确定 jiang 登录接口激励（报价 600）＋gas 代付服务</td><td>Siddhartha「这个登录接口算在我们这个第一阶段 3000U 里面」（L163）；jiang 报价 600（L173）；CC「有点偏高……这是在我们第一阶段的那个预算里头」（L177）<button class="evbtn" data-ev="t11">证</button>。</td><td><b>阶段 A/B·一期预算内激励</b></td></tr>
+    <tr><td>2026-02-27<br><a class="tag t-meeting" href="腾讯会议 cc参与/380630156-麦田预定的会议-2025-02-27.md" target="_blank">腾讯·380630156</a></td><td>又一村、谠泰、方方、楊云标（砚仁）、leo；<b>CC 未参会</b></td><td>南塘在地运营分工（生态/文化/后勤）</td><td>「任务」仅指接待任务（L113/157），无任何软件开发内容。</td><td>与任务系统无关</td></tr>
+    <tr><td>2026-03-05<br><a class="tag t-meeting" href="腾讯会议 cc参与/41756306825-麦田预定的会议-2026-03-05.md" target="_blank">腾讯·41756306825</a></td><td>xboring、Siddhartha、舒云展、<b>乘月归（CC）</b></td><td>开发进展会（CC 演示社区广场/三级管理员；舒云展演示任务上链备注）</td><td>讨论中明确当前里程碑为「by 第二期」（L43）<button class="evbtn" data-ev="t12">证</button>；无费用/报价发言。</td><td><b>阶段 B·二期</b>（原话「by 第二期」）</td></tr>
+    <tr><td>2026-03-12<br><a class="tag t-meeting" href="腾讯会议 cc参与/823314736-麦田预定的会议-2026-03-12.md" target="_blank">腾讯·823314736</a></td><td>楊云标（砚仁）、FC、刘兵；<b>CC 未参会</b></td><td>「到南塘赶集会」设想与共创营回顾</td><td>与任务系统无关（索引词「需求/上线」分别为 L187 营员想法、L45 刘兵入会「刚上线」）。</td><td>与任务系统无关</td></tr>
+    <tr><td>2026-03-16<br><a class="tag t-meeting" href="腾讯会议 cc参与/522150189-麦田预定的会议-2026-03-16.md" target="_blank">腾讯·522150189</a></td><td>Siddhartha、jiang、舒云展、xboring、<b>乘月归（CC）</b></td><td>AI 社区管理员计划＋<b>应用系统二期验收</b></td><td>议程原话「第二个是应用系统二期的一个验收」（L15）<button class="evbtn" data-ev="t13">证</button>；舒云展「他可以和我们这个任务系统也结合一下」（L155）；Siddhartha「我们现在做那个任务系统，我觉得它最……」（L161）。<b>转写文本于验收议题开始后约 2.5 分钟处截断（L211 止），验收结论及是否结清不在文本内。</b></td><td><b>阶段 B·二期验收</b>（共创营三期筹备会 4/15 之前一个月）</td></tr>
+    <tr class="key-row"><td>2026-06-01 16:01<br><a class="tag t-meeting" href="腾讯会议 cc参与/518234837-麦田预定的会议-2026-06-01.md" target="_blank">腾讯·518234837</a></td><td>Cc（CC）、舒云展（等 xboring 未到场）</td><td>闲聊（无议程）</td><td>舒云展「你那个多签的钱拿到了吗？」CC「没有啊」（L85-87）<button class="evbtn" data-ev="t18">证</button>。</td><td>无任务系统议题（仅费用问句）</td></tr>
+    <tr class="key-row"><td>2026-06-01 17:51<br><a class="tag t-meeting" href="腾讯会议 cc参与/189693647-麦田预定的会议-2026-06-01.md" target="_blank">腾讯·189693647</a></td><td>Cc（CC）、xboring、小白</td><td>传达与刘兵沟通后的安排：任务系统拆分独立＋重新报价</td><td>xboring「任务系统后面会和开发者社区这边给拆开……做一个单独的一个项目」<button class="evbtn" data-ev="t14">证</button>；报价「第一部分是把之前的给 cover 掉，第二部分是新增的功能，包括……燕人（砚仁）他提的那些需求」（L85）<button class="evbtn" data-ev="t15">证</button>；CC「原来不就是要做活动吗，但是没有做，然后艺人（砚仁）正好提出要做活动了，所以我就做了」（L91）<button class="evbtn" data-ev="t16">证</button>；资金「刘斌那边会出一部分，另一部分按需求方以南塘的名义……南塘那边会去做一部分的支付」（L69-71）<button class="evbtn" data-ev="t17">证</button>。</td><td><b>阶段 D·拆分独立方案</b>（同场把「之前的」与「新增=共创营 2.0 需求」分开计价）</td></tr>
+    <tr class="key-row"><td>2026-06-01 20:00<br><a class="tag t-meeting" href="腾讯会议 cc参与/658662284-麦田预定的会议-2026-06-01.md" target="_blank">腾讯·658662284</a></td><td>xboring、舒云展、Siddhartha；<b>CC 未参会（被转述）</b></td><td>同一方案向舒云展、Siddhartha 同步</td><td>「任务系统会单独作为一个项目，然后去和刘斌那边去申请资金」；「总报价大概是 12000……已经支出了 3000 的话暂时不考虑，然后整体会以 12000 的一个名义去和刘斌那边去做一个博弈」（L69/L83）<button class="evbtn" data-ev="t19">证</button>；CC 负责整理已开发/待开发任务与报价表（当晚/次日初稿）<button class="evbtn" data-ev="t20">证</button>。</td><td><b>阶段 D·拆分独立方案</b></td></tr>
+    <tr><td>2025-09-27<br><a class="tag t-meeting" href="腾讯会议 cc参与/551331622-【拉呱社区】社区与生活：铁打的客栈、流水的人-2025-09-27.md" target="_blank">腾讯·551331622</a></td><td>紫姀、野生蓝莓（虹阳）等；<b>CC 未参会</b></td><td>拉呱社区对谈（数字游民社区流动性）</td><td>与任务系统无关（「任务」指出行任务 L79）。</td><td>与任务系统无关</td></tr>
+    <tr><td>2026-08-07<br><a class="tag t-meeting" href="腾讯会议 cc参与/386722812-麦田预定的会议-2026-08-07.md" target="_blank">腾讯·386722812</a></td><td>xiaobai（小白）、发丘中郎将、木木曦；<b>CC 未参会</b></td><td>蔚蓝/微澜团队（南塘背景）农场创业项目规划会</td><td>与任务系统开发无关；唯一提及：发丘中郎将引用「白平台上的任务发布平台」作为治理执行工具（L129）<button class="evbtn" data-ev="t21">证</button>。</td><td>与任务系统开发无关（衍生创业项目）</td></tr>
+    </tbody>
+  </table>
+
+  <h3 style="margin:14px 0 6px">任务平台的阶段与归属（依据上述转写的事实归纳，不作推测）</h3>
+  <ul>
+    <li><b>阶段 A · 起源与一期（约 2025 年 12 月初 – 2026 年 2 月）：</b>任务系统「从开始说要做……大概是 12 月初」（1/13 会，L85）<button class="evbtn" data-ev="t02">证</button>；一期里程碑 3000U「已经发完了」（2/19 会，L43）<button class="evbtn" data-ev="t07">证</button>。——<b>任务平台的起源早于第三期共创营（4/15）约四个月。</b></li>
+    <li><b>阶段 B · 二期（2026 年 1–3 月）：</b>二期预算 5000U（2/19 会，L39/L71）<button class="evbtn" data-ev="t07">证</button>；3/5 会明确「by 第二期」（L43）<button class="evbtn" data-ev="t12">证</button>；3/16 会议程含「应用系统二期的一个验收」（L15）<button class="evbtn" data-ev="t13">证</button>；二期费用未结（6/11 iMeeting 周同步：「没有给二期的费用，问题是摆着的」<button class="evbtn" data-ev="e10a">证</button>）。</li>
+    <li><b>阶段 C · 共创营三期 2.0 新需求（2026 年 4/15 起）：</b>即本页矩阵主线（S7-4，2000U）；CC 本人确认活动功能「原来（架构里）就是要做的……砚仁正好提出要做活动了，所以我就做了」（6/1 会，L91）<button class="evbtn" data-ev="t16">证</button>。</li>
+    <li><b>阶段 D · 拆分独立方案（6/1 提出，未见落地记录）：</b>任务系统拟从开发者社区拆为单独项目，以 12000 总报价向刘兵重新申请资金，报价分「之前的 cover＋新增功能」两部分（6/1 两场，L85/L83）<button class="evbtn" data-ev="t15">证</button><button class="evbtn" data-ev="t19">证</button>；本库此后无该报价单或申请结果的记录。</li>
+  </ul>
+
+  <h3 style="margin:14px 0 6px">两个关系的事实归纳（只列事实，不作评价）</h3>
+  <ul>
+    <li><b>开发者社区 ↔ 任务平台：</b>① 任务系统由该团队以「项目制＋里程碑」开发：一期 3000U（已结）、二期 5000U，合计约 8000U「拨在 task 里头」（CC 原话，2/19 会 L121）<button class="evbtn" data-ev="t09">证</button>；② 资金来源记录中为向刘斌（刘兵）申请——「找刘斌要新的，好像被否定了」（2/19 会 L75）<button class="evbtn" data-ev="t10">证</button>；③ 6/1 起筹划与开发者社区拆开、单独立项（6/1 会 L19/L69）<button class="evbtn" data-ev="t14">证</button><button class="evbtn" data-ev="t19">证</button>。</li>
+    <li><b>CC ↔ 任务平台：</b>① CC 的加入方式：「我跟 cc 说的是请他帮个忙，我没有跟他聊激励」（小白，1/13 会 L155）<button class="evbtn" data-ev="t03">证</button>；② CC 是主要开发者之一：「展子跟 cc 他们要做，就是那个任务系统的」（Siddhartha，2/19 会 L69）<button class="evbtn" data-ev="t08">证</button>、「我和 CC 开发」（舒云展，2/12 会 L43）<button class="evbtn" data-ev="t06">证</button>；③ CC 在二期预算分配上有发言立场：反对从任务系统 5000U 中支付 jiang 的 2800 激励（2/19 会 L77-201）；④ 2.0 阶段 CC 的角色：为共创营三期承接新需求开发（矩阵主线），6/1 被安排整理任务系统已开发/待开发清单与报价表（6/1 会 L81/L93）<button class="evbtn" data-ev="t20">证</button>。</li>
+  </ul>
+</div>
+
 <footer>
   <h2>溯源对照表</h2>
   <p><b>会议记录（点击打开该次会议完整发言记录）：</b>
@@ -887,6 +953,26 @@
   <p><b>微信群聊原始记录：</b>
     <a class="tag t-wechat" href="微信记录_weflow/南塘DAO_微信记录_20260829.md" target="_blank">南塘DAO群（1056 条，2026-05-01~08-29）·待核验</a>
     <a class="tag t-wechat" href="微信记录_weflow/semi_微信记录_20260829.md" target="_blank">semi群/开发者社区群（974 条，2026-05-24~08-20）·待核验</a>
+  </p>
+  <p><b>腾讯会议转写（17 场，CC 参与或涉及任务平台；索引与逐字稿在 <code>腾讯会议 cc参与/</code>）：</b>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/会议索引.md" target="_blank">会议索引</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/194395537-麦田预定的会议-2026-01-08.md" target="_blank">1/8</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/128726321-麦田预定的会议-2026-01-13.md" target="_blank">1/13</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/223269658-麦田预定的会议-2026-01-14.md" target="_blank">1/14</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/412941944-麦田预定的会议-2026-01-16.md" target="_blank">1/16</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/137955547-麦田预定的会议-2026-02-12.md" target="_blank">2/12</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/203288069-麦田预定的会议-2026-02-19.md" target="_blank">2/19</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/900852911-麦田预定的会议-2026-02-26.md" target="_blank">2/26</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/41756306825-麦田预定的会议-2026-03-05.md" target="_blank">3/5</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/522150189-麦田预定的会议-2026-03-16.md" target="_blank">3/16</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/518234837-麦田预定的会议-2026-06-01.md" target="_blank">6/1·16:01</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/189693647-麦田预定的会议-2026-06-01.md" target="_blank">6/1·17:51</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/658662284-麦田预定的会议-2026-06-01.md" target="_blank">6/1·20:00</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/386722812-麦田预定的会议-2026-08-07.md" target="_blank">8/7</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/525975953-麦田预定的会议-2026-01-07.md" target="_blank">1/7（无关场）</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/380630156-麦田预定的会议-2025-02-27.md" target="_blank">2025/2/27（无关场）</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/551331622-【拉呱社区】社区与生活：铁打的客栈、流水的人-2025-09-27.md" target="_blank">2025/9/27（无关场）</a>
+    <a class="tag t-meeting" href="腾讯会议 cc参与/823314736-麦田预定的会议-2026-03-12.md" target="_blank">3/12（无关场）</a>
   </p>
   <p><b>不作为事实来源的材料（参与者自述/辩解及衍生品，仅备查）：</b><code>争议文档与核验报告/</code> 下《关于任务系统2.0开发费用争议的事实说明_v3》《回应_给砚仁_2026-08-05》《砚仁视角_标准录音6-原文》《任务系统2.0开发费用争议-会议交叉核验报告》。本矩阵不引用其内容作为事实依据；凡其中事实与上述四类原始资料一致者，均已改为直接引用原始资料。</p>
   <p><b>待补追溯缺口：</b>① 2026-03-24~27 刘兵停借合作社发言——本库微信归档自 5/1 起，原文未归档；② CC×砚仁 私聊原始记录（含 5/1–5/2 谈钱过程）——未归档，仅见于 CC 7/28 在南塘DAO群的转发与自述；③ 刘兵对「5 ETH 是否含开发费」的确认——7/20、7/28 两次约定，截至 8/29 归档无结果记录；④ 6/13 开发者社区「多签功能费用讨论」会议原文（编号 225440935）——不在砚仁 iMeeting 账号会议列表中，仅见 semi 群转发消息；⑤ 8/30「梳理【资金矛盾事实】」会议（编号 418159814）——iMeeting 上尚无纪要/发言记录文件生成。</p>
@@ -958,7 +1044,28 @@ e21a:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/493
 e21b:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/493790347-周同步-2026-05-21.md',lines:'L424',who:'CC（5/21 开发者社区周同步）',quote:'我之前也是向砚仁确认了，他说剑桥打电话问他，如果有需求的话，可以提供资金。所以我才决定去做的。不然这个本来就是放在第三阶段，对吧？那个时候再提交新的提案也是可以的。'},
 e21c:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/493790347-周同步-2026-05-21.md',lines:'L445',who:'CC（5/21 开发者社区周同步）',quote:'其实我觉得有没有资金过来发电，我也是能接受的，但是如果之前答应了就应该做到。只提供承诺，但是后面由于这样那样的原因无法提供的话，还是有一点令人悲伤吧。'},
 e21d:{src:'会议发言记录（iMeeting 原文）',file:'会议原始记录/493790347-周同步-2026-05-21.md',lines:'L347-353',who:'xiaobai/小白（5/21 开发者社区周同步）',quote:'据我所知，我没有经历过二家的验收。我之前经历过几次，但是好像都没有完全完成。……我刚刚听 CC 的意思是，如果刘斌哥那边愿意支付二家的开发费用的话，他会愿意免费帮砚仁完成这一次提出的需求。但是目前有点尴尬，我们没有把这笔费用要到。所以，我们也必须要考量新提出的这个功能是谁来付费。尴尬的是，在这个地方，没有任何人有付费能力。'},
-e62a:{src:'会议纪要（iMeeting）',file:'会议纪要/139021728-南塘DAO-南塘DAO第62期周会-纪要.md',lines:'L233-270（第三项议程：南塘DAO当前财务结算方案）',who:'智能秘书（7/20 第62期周会）',quote:'第三项议程：3. 南塘DAO当前财务结算方案。事实：60%资金将留在可获取的金库中；南塘DAO在当前期间可动用剩余40%。……提问：1.「斌哥」本次打款，以及「共创营」结项后的支付或奖励，分别包含哪些款项？对应的时间与金额分别是多少？……（该款项性质为「奖励」还是「投资款」需由相关方明确。）'}
+e62a:{src:'会议纪要（iMeeting）',file:'会议纪要/139021728-南塘DAO-南塘DAO第62期周会-纪要.md',lines:'L233-270（第三项议程：南塘DAO当前财务结算方案）',who:'智能秘书（7/20 第62期周会）',quote:'第三项议程：3. 南塘DAO当前财务结算方案。事实：60%资金将留在可获取的金库中；南塘DAO在当前期间可动用剩余40%。……提问：1.「斌哥」本次打款，以及「共创营」结项后的支付或奖励，分别包含哪些款项？对应的时间与金额分别是多少？……（该款项性质为「奖励」还是「投资款」需由相关方明确。）'},
+t01:{src:'腾讯会议转写',file:'腾讯会议 cc参与/194395537-麦田预定的会议-2026-01-08.md',lines:'L75-81',who:'xboring、Siddhartha（1/8 任务系统进度会）',quote:'xboring(?)：任务发布这边……这两天是有在做第八个是吧？／Siddhartha：是那个 CC 他在做……他在他在 debug。'},
+t02:{src:'腾讯会议转写',file:'腾讯会议 cc参与/128726321-麦田预定的会议-2026-01-13.md',lines:'L85',who:'Siddhartha（1/13 开发模式讨论会）',quote:'嗯，我我就是会觉得之前的。呃，就是我们从开始说要做十那个任务系统，大概是十二月初……'},
+t03:{src:'腾讯会议转写',file:'腾讯会议 cc参与/128726321-麦田预定的会议-2026-01-13.md',lines:'L155-163',who:'小白、Siddhartha（1/13，谈 CC 的加入方式）',quote:'小白：我跟 cc 说的是请他帮个忙，我没有跟他聊激励。／Siddhartha：就纯义务帮忙是吧？／小白：是……如果你有预算的话可以跟他聊。'},
+t04:{src:'腾讯会议转写',file:'腾讯会议 cc参与/128726321-麦田预定的会议-2026-01-13.md',lines:'L117、L131-137',who:'xboring（1/13）',quote:'我和展子……目前的是每个月 2500 的基本的（薪资）。／小白发的表格上写的是做基础维护，实际上我们没有做什么维护。／维护费用是独立的，项目本身的费用我之前计划是大概 5000U……没有划分明确里程碑。／包括 CC 这边……费用分配你们自己内部协商。'},
+t05:{src:'腾讯会议转写',file:'腾讯会议 cc参与/223269658-麦田预定的会议-2026-01-14.md',lines:'L117、L141',who:'参会者（1/14 任务发布×钱包联通对接会）',quote:'他们在做那个艺术共创营。／任务完成之后积分发布可以跳转到钱包。—— 1 月已存在进行中的「艺术共创营」，任务系统与钱包（数字身份）做接口联通。'},
+t06:{src:'腾讯会议转写',file:'腾讯会议 cc参与/137955547-麦田预定的会议-2026-02-12.md',lines:'L43、L95',who:'舒云展、Siddhartha（2/12 进度同步）',quote:'舒云展：那像我和 CC 开发的话，我们要展示一下这周都做了什么吗？／Siddhartha：已经就是把测试版发出来了……有一些 bug 可能 cc 还在改。'},
+t07:{src:'腾讯会议转写',file:'腾讯会议 cc参与/203288069-麦田预定的会议-2026-02-19.md',lines:'L39-43',who:'Siddhartha（2/19 激励分配讨论会）',quote:'从我们现在就是做的那个任务系统里面，当时有写里程碑，第一期是 3000，然后第二期是 5000U……从这个 5000U 里面去划分那个激励。／我们已经做的第一期的这个任务的那个部分 3000 已经发结发完了嘛……只有那个 5000 的预算。'},
+t08:{src:'腾讯会议转写',file:'腾讯会议 cc参与/203288069-麦田预定的会议-2026-02-19.md',lines:'L69-71',who:'Siddhartha（2/19）',quote:'目前的话是把展子跟 cc 他们要做，就是那个任务系统的。……有一个任务系统的任务系统的开发。他就是这里，这里当时给的预算是 5000U。'},
+t09:{src:'腾讯会议转写',file:'腾讯会议 cc参与/203288069-麦田预定的会议-2026-02-19.md',lines:'L121',who:'乘月归（CC）（2/19）',quote:'是在他的 C 米项目呀，不是在我们的。任务系统像我们的 8000U 是拨在 task 里头的，虽然我们有接需求，但是我们需求只是接口的需求。'},
+t10:{src:'腾讯会议转写',file:'腾讯会议 cc参与/203288069-麦田预定的会议-2026-02-19.md',lines:'L73-75',who:'jiang、Siddhartha（2/19）',quote:'jiang：那个是 2800？／Siddhartha：……如果说是要发的话，也是从现在已有的这个 5000U 里面去分。或者找刘斌要新的，好像被否定了。'},
+t11:{src:'腾讯会议转写',file:'腾讯会议 cc参与/900852911-麦田预定的会议-2026-02-26.md',lines:'L163-177',who:'Siddhartha、jiang、乘月归（2/26 激励确定会）',quote:'Siddhartha：这个登录接口的话，其实是算在我们这个第一阶段，3000U 里面。／jiang：为 600（报价）。／乘月归：只能说有点偏高……这是在我们第一阶段的那个预算里头。'},
+t12:{src:'腾讯会议转写',file:'腾讯会议 cc参与/41756306825-麦田预定的会议-2026-03-05.md',lines:'L43',who:'参会者（3/5 开发进展会）',quote:'……（讨论任务系统功能时明确标注所处里程碑为）「by 第二期」。'},
+t13:{src:'腾讯会议转写',file:'腾讯会议 cc参与/522150189-麦田预定的会议-2026-03-16.md',lines:'L15、L175',who:'Siddhartha（3/16，议程宣读）',quote:'一个是 AI 社区这边管理员的计划，然后第二个是应用系统二期的一个验收。—— 该会含「任务系统二期验收」议程（转写文本于验收议题开始后约 2.5 分钟处截断）。'},
+t14:{src:'腾讯会议转写',file:'腾讯会议 cc参与/189693647-麦田预定的会议-2026-06-01.md',lines:'L19-23',who:'xboring（6/1 17:51 场，向 CC、小白传达）',quote:'那个任务系统后面会和开发者社区这边给拆开，然后就是任务系统会做一个单独的一个项目……然后去维护，然后这边会和开发者社区这边会拆开。'},
+t15:{src:'腾讯会议转写',file:'腾讯会议 cc参与/189693647-麦田预定的会议-2026-06-01.md',lines:'L85',who:'xboring（6/1 17:51 场）',quote:'（报价）分成两部分，第一部分是把之前的给 cover 掉，然后第二部分是新增的功能，包括说像那个谁，那个那个燕人（按语境为「砚仁」的转写），他提的那些需求。'},
+t16:{src:'腾讯会议转写',file:'腾讯会议 cc参与/189693647-麦田预定的会议-2026-06-01.md',lines:'L91',who:'Cc（CC 本人，6/1 17:51 场）',quote:'也有部分是出于原来的架构，因为原来不就是要做活动吗，但是没有做，然后艺人（按语境为「砚仁」的转写）正好提出要做活动了，所以我就做了。这个就还是名义上还是单拎出来，说这是社区的需求是吧？'},
+t17:{src:'腾讯会议转写',file:'腾讯会议 cc参与/189693647-麦田预定的会议-2026-06-01.md',lines:'L69-71、L207-209',who:'xboring（6/1 17:51 场）',quote:'这块钱的问题……刘斌那边会出一部分，然后另一部分会按照需求方……以南南（南塘）的名义这边来去做一个需求……那么南南（塘）那边会去做一部分的支付。／之前他在群里应该有发一个 NFT 的报价单……参照一下那个，然后我们再出一个报价单。这次的报价的话会做一些上浮……再以整体的形式去和刘斌那边去对一下。'},
+t18:{src:'腾讯会议转写',file:'腾讯会议 cc参与/518234837-麦田预定的会议-2026-06-01.md',lines:'L85-87',who:'舒云展、Cc（6/1 16:01 闲聊场）',quote:'舒云展：哎呀诶，你那个多签的钱拿到了吗？开发多钱呐？／Cc：没有啊……'},
+t19:{src:'腾讯会议转写',file:'腾讯会议 cc参与/658662284-麦田预定的会议-2026-06-01.md',lines:'L69、L83',who:'xboring（6/1 20:00 场，向舒云展、Siddhartha 同步）',quote:'后面的话菲米（Cimi 钱包）和任务系统会分开……任务系统会单独作为一个项目，然后去和刘斌那边去申请资金。／他这边的总报价大概是 12000……已经支出了 3000 的话暂时不考虑，然后整体会以 12000 的一个名义去和刘斌那边去做一个博弈。'},
+t20:{src:'腾讯会议转写',file:'腾讯会议 cc参与/658662284-麦田预定的会议-2026-06-01.md',lines:'L81、L87、L93',who:'xboring（6/1 20:00 场）',quote:'这块我是先让 cc 那边先去整理一下……已经开发的任务和待开发的任务，以及他们的一个报价表。／对外沟通需求和需求梳理这块会先让 cc 那边去跟，服务稳定维护放到院长这边，代码审核和合并放到江那边。／cc 那边在写任务系统的需求和待完成需求的梳理，以及那个报价表……今天晚上或者明天晚上会给到一个初稿。'},
+t21:{src:'腾讯会议转写',file:'腾讯会议 cc参与/386722812-麦田预定的会议-2026-08-07.md',lines:'L129',who:'发丘中郎将（8/7 蔚蓝团队农场项目规划会）',quote:'行政权我是想交给智能合约的……比如说放到任务发布，现在那个白平台（bai 平台）上有任务发布平台嘛，然后就用让他来执行。—— 全场唯一提及任务平台处，系引用其作为治理工具，非开发讨论。'}
 };
 
 function openEv(id){
