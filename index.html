@@ -81,13 +81,15 @@
   /* 手机端适配：缩小首列与字号，保证横向滚动时首列不独占屏幕 */
   @media (max-width:768px){
     body{font-size:13px}
-    header{padding:18px 12px 10px}
+    header{padding:18px 12px 10px;padding-right:108px}  /* 右上角留给主题切换按钮 */
     h1{font-size:18px}
     h2{font-size:15px}
     .box{margin:12px 12px;padding:12px 14px}
+    .legend{margin:10px 12px 0}
     .flow{margin:6px 12px 0}
-    .wrap{padding:0 8px;max-height:calc(100vh - 40px)}
+    .wrap{padding:0 8px;max-height:calc(100vh - 40px);-webkit-overflow-scrolling:touch}
     table{min-width:1200px}
+    .tmtable{min-width:0}  /* 信息表随屏宽，不触发页面级横向滚动 */
     th,td{padding:6px 7px}
     thead th{min-width:70px;font-size:10px;padding:6px 3px;word-break:break-word;overflow-wrap:anywhere}
     thead th:first-child{min-width:110px;max-width:130px}
@@ -97,14 +99,23 @@
     .stage-name{font-size:11px}
     .stage-src{margin-top:2px}
     .stage-meta{font-size:10.5px}
-    .tag{font-size:9px;padding:1px 4px}
+    .tag{font-size:10px;padding:2px 6px}  /* 触控目标加大 */
     td ul{padding-left:12px}
     td li{margin-bottom:3px;font-size:12px}
-    .evbtn{font-size:9px;padding:0 4px;margin-left:2px}
-    #evModal{padding:12px 14px;margin:8px auto}
+    .evbtn{font-size:10px;padding:1px 6px;margin-left:2px}
+    footer{padding:0 12px 24px}
+    #evOverlay{padding:12px 6px}
+    #evModal{padding:12px 12px;margin:6px auto}
+    #evQuote,#evCtx{max-height:38vh}
+    .tmtable .tag{white-space:normal}  /* 表格内长标签允许换行，避免撑破版心 */
+    .tmtable th,.tmtable td{word-break:break-word;overflow-wrap:anywhere}  /* 长文件名/链接可断行 */
+    .tmtable th{min-width:0 !important}  /* 覆盖表头内联 min-width，让表格随屏宽收缩 */
+    /* 评论组件：输入框字号提到 16px 防止 iOS 聚焦自动放大 */
+    #cmDialog input,#cmDialog textarea{font-size:16px}
+    #cmDialog{margin:16px auto;padding:14px 14px}
     .tmtable th,.tmtable td{font-size:10.5px}
   }
-  .tmtable{width:100%;border-collapse:collapse;font-size:12px}
+  .tmtable{width:100%;min-width:0;border-collapse:collapse;font-size:12px}
   .tmtable th{position:sticky;top:0;background:var(--panel2);color:var(--txt);text-align:left;padding:5px 8px;border:1px solid var(--line);font-size:12px}
   .tmtable td{padding:6px 8px;border:1px solid var(--line);vertical-align:top;line-height:1.6;background:var(--panel);color:var(--txt)}
   .tmtable tr.key-row td{background:#20293f}
@@ -135,6 +146,10 @@
   /* 主题切换按钮 */
   #themeToggle{position:fixed;top:14px;right:16px;z-index:900;border:1px solid var(--line);background:var(--panel2);color:var(--txt);border-radius:20px;padding:6px 14px;font-size:12.5px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);font-family:inherit}
   #themeToggle:hover{border-color:var(--accent);color:var(--accent)}
+  /* 手机端：缩小并内收主题按钮（须晚于上面的基础定义，同特异性后定义生效） */
+  @media (max-width:768px){
+    #themeToggle{top:10px;right:10px;padding:4px 10px;font-size:11.5px}
+  }
 </style>
 </head>
 <body>
