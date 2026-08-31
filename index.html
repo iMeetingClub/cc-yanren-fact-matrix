@@ -159,6 +159,17 @@
   .toc-link{display:block;color:var(--dim);text-decoration:none;font-size:12.5px;line-height:1.45;padding:6px 8px;border-radius:8px;border-left:3px solid transparent}
   .toc-link:hover{color:var(--txt);background:var(--panel2)}
   .toc-link.toc-act{color:var(--txt);background:var(--panel2);border-left-color:var(--accent);font-weight:bold}
+  /* 章→节层级嵌套：章可折叠、节缩进；章级高亮为弱态（跟随所含小节的滚动高亮） */
+  .toc-chap{margin-top:2px}
+  .toc-chapbtn{display:flex;align-items:center;gap:6px;width:100%;background:transparent;border:none;border-left:3px solid transparent;color:var(--txt);font-size:12.5px;font-weight:bold;text-align:left;padding:6px 8px;border-radius:8px;cursor:pointer;font-family:inherit;line-height:1.45}
+  .toc-chapbtn:hover{background:var(--panel2)}
+  .toc-chapbtn.toc-act-chap{color:var(--accent);background:var(--panel2);border-left-color:var(--accent)}
+  .toc-caret{flex:none;width:0;height:0;border:4px solid transparent;border-left-color:var(--dim);transform:rotate(90deg);transition:transform .15s ease}
+  .toc-chap.toc-collapsed .toc-caret{transform:none}
+  .toc-subs{padding-left:15px}
+  .toc-chap.toc-collapsed .toc-subs{display:none}
+  .toc-sub{font-size:12px;padding:5px 8px}
+  .toc-chaplink{font-weight:bold}
   #tocFab{display:none;position:fixed;left:12px;bottom:12px;z-index:880;border:1px solid var(--line);background:var(--panel2);color:var(--txt);border-radius:20px;padding:8px 14px;font-size:12.5px;cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,.25);font-family:inherit}
   #tocFab:hover{border-color:var(--accent);color:var(--accent)}
   #tocMask{display:none;position:fixed;inset:0;background:rgba(5,8,15,.55);z-index:885}
@@ -191,15 +202,25 @@
 <div id="tocMask" class="cm-ui"></div>
 <nav id="tocNav" class="cm-ui" aria-label="文档目录">
   <div id="tocTitle">目录</div>
-  <a class="toc-link" href="#toc-sec-top">第一章 1.1 阅读规则（文首）</a>
-  <a class="toc-link" href="#toc-sec-bg">第一章 1.2 背景与组织关系</a>
-  <a class="toc-link" href="#toc-sec-src">第一章 1.3 资料来源规则</a>
-  <a class="toc-link" href="#toc-sec-req">第二章 需求 ↔ 提案 ↔ 阶段</a>
-  <a class="toc-link" href="#toc-sec-flow">第三章 责任流向</a>
-  <a class="toc-link" href="#toc-sec-who">第四章 责任一览</a>
-  <a class="toc-link" href="#toc-sec-matrix">第五章 事实矩阵（30 阶段 × 11 列）</a>
-  <a class="toc-link" href="#toc-sec-feat">第五章 附：功能级对照</a>
-  <a class="toc-link" href="#toc-sec-trace">第六章 溯源对照表</a>
+  <div class="toc-chap">
+    <button class="toc-chapbtn" type="button" aria-expanded="true"><span class="toc-caret"></span>第一章 阅读规则与背景</button>
+    <div class="toc-subs">
+      <a class="toc-link toc-sub" href="#toc-sec-top">1.1 阅读规则（文首）</a>
+      <a class="toc-link toc-sub" href="#toc-sec-bg">1.2 背景与组织关系</a>
+      <a class="toc-link toc-sub" href="#toc-sec-src">1.3 资料来源规则</a>
+    </div>
+  </div>
+  <a class="toc-link toc-chaplink" href="#toc-sec-req">第二章 需求 ↔ 提案 ↔ 阶段</a>
+  <a class="toc-link toc-chaplink" href="#toc-sec-flow">第三章 责任流向</a>
+  <a class="toc-link toc-chaplink" href="#toc-sec-who">第四章 责任一览</a>
+  <div class="toc-chap">
+    <button class="toc-chapbtn" type="button" aria-expanded="true"><span class="toc-caret"></span>第五章 事实矩阵与功能对照</button>
+    <div class="toc-subs">
+      <a class="toc-link toc-sub" href="#toc-sec-matrix">5.1 事实矩阵（30 阶段 × 11 列）</a>
+      <a class="toc-link toc-sub" href="#toc-sec-feat">5.2 附：功能级对照（git 证据）</a>
+    </div>
+  </div>
+  <a class="toc-link toc-chaplink" href="#toc-sec-trace">第六章 溯源对照表</a>
 </nav>
 <header id="toc-sec-top">
   <h1>任务系统 2.0 开发费用争议 · 事实矩阵</h1>
@@ -260,6 +281,20 @@
   </ul>
 </div>
 
+<div class="box" id="toc-sec-src">
+  <h2>1.3 资料来源规则（事事有追溯）</h2>
+  <b>仅采用以下四类原始资料作为事实来源，点击出处标签即可查看原始内容：</b>
+  <ol>
+    <li><b>会议记录（iMeeting 原文）</b>——点击会议号标签，打开 <code>会议原始记录/</code> 下该次会议的完整发言记录文档。</li>
+    <li><b>微信群聊消息</b>——每条均注明来源群聊（<b>semi 群</b>=开发者社区群 / <b>南塘DAO 群</b>），点击标签打开 <code>微信记录_weflow/</code> 下该群的完整原始聊天记录。微信记录来自 WeFlow 解密本地库，<b>正确性待核验</b>，一律标注「待核验」。CC×砚仁、刘兵×砚仁 私聊与 semi 群（他山之石斋账号）原始记录已于 2026-08-30 经 WeFlow 全量提取归档（行号逐条核对，见文末溯源对照表），标注为「微信·CC×砚仁私聊」「微信·刘兵×砚仁私聊」「微信·semi群（他山之石斋账号存档）」；此前仅存的 CC 7/28 群内转发件保留标注「微信·南塘DAO群（CC 转发私聊）·待核验」。</li>
+    <li><b>提案内容（Notion）</b>——点击标签打开 <code>提案原始文件/</code> 下的提案原文（S7-4 经南塘DAO Notion 提案库机器人连接调取全文）。Notion 提案库为内部页面、<b>无公开 URL</b>（导出件仅存页面 ID，如 S7-4 = 35dffc80-e360-8029-b9e0-dcd574b96d17），故本页所有提案名/标签链接一律指向<b>本库归档全文</b>。</li>
+    <li><b>Snapshot 投票</b>——点击标签跳转 snapshot.box 上该提案的投票页（空间 s:ntdao.eth）；本地原始 API 数据存于 <code>投票与提案记录/raw/</code>。</li>
+    <li><b>腾讯会议转写（补充来源）</b>——17 场 CC 参与且涉及任务平台的腾讯会议逐字稿，存于 <code>腾讯会议 cc参与/</code>（含 <code>会议索引.md</code>）。按提供方要求暂标注为「开发者社区组织的工作会议」；与任务平台相关的 12 场内容已按时间并入<b>第五章事实矩阵</b>对应行，另 5 场与任务系统开发无关，见第六章溯源对照表。</li>
+  </ol>
+  <b>不作为事实来源的材料：</b>参与者为自己陈述/辩解的材料及衍生观点文档——《关于任务系统2.0开发费用争议的事实说明_v3》《回应_给砚仁_2026-08-05》《砚仁视角_标准录音6-原文》《任务系统2.0开发费用争议-会议交叉核验报告》——<b>一律不作为本矩阵的事实依据</b>（仅列于文末备查）。<br>
+  <b>别名对照（事实）：</b>虹阳=野生蓝莓=弘扬/洪阳（谐音同一人）；刘兵=刘斌/斌哥/兵哥（投资人）；淑惠=和光同尘（iMeeting 显示名）；砚仁=他山之石（Snapshot 昵称）=苏砚仁=Yunbiao Yang（Notion 创建人）=他山之石斋（微信）；CC=乘月归（微信）；小白=xiaobai=577（微信）。
+</div>
+
 <div class="box" id="toc-sec-req">
   <h2>第二章 需求 ↔ 提案 ↔ 阶段：一一对应（功能划分，只列事实）</h2>
   <table class="tmtable">
@@ -288,19 +323,6 @@
   </ul>
 </div>
 
-<div class="box" id="toc-sec-src">
-  <h2>1.3 资料来源规则（事事有追溯）</h2>
-  <b>仅采用以下四类原始资料作为事实来源，点击出处标签即可查看原始内容：</b>
-  <ol>
-    <li><b>会议记录（iMeeting 原文）</b>——点击会议号标签，打开 <code>会议原始记录/</code> 下该次会议的完整发言记录文档。</li>
-    <li><b>微信群聊消息</b>——每条均注明来源群聊（<b>semi 群</b>=开发者社区群 / <b>南塘DAO 群</b>），点击标签打开 <code>微信记录_weflow/</code> 下该群的完整原始聊天记录。微信记录来自 WeFlow 解密本地库，<b>正确性待核验</b>，一律标注「待核验」。CC×砚仁、刘兵×砚仁 私聊与 semi 群（他山之石斋账号）原始记录已于 2026-08-30 经 WeFlow 全量提取归档（行号逐条核对，见文末溯源对照表），标注为「微信·CC×砚仁私聊」「微信·刘兵×砚仁私聊」「微信·semi群（他山之石斋账号存档）」；此前仅存的 CC 7/28 群内转发件保留标注「微信·南塘DAO群（CC 转发私聊）·待核验」。</li>
-    <li><b>提案内容（Notion）</b>——点击标签打开 <code>提案原始文件/</code> 下的提案原文（S7-4 经南塘DAO Notion 提案库机器人连接调取全文）。Notion 提案库为内部页面、<b>无公开 URL</b>（导出件仅存页面 ID，如 S7-4 = 35dffc80-e360-8029-b9e0-dcd574b96d17），故本页所有提案名/标签链接一律指向<b>本库归档全文</b>。</li>
-    <li><b>Snapshot 投票</b>——点击标签跳转 snapshot.box 上该提案的投票页（空间 s:ntdao.eth）；本地原始 API 数据存于 <code>投票与提案记录/raw/</code>。</li>
-    <li><b>腾讯会议转写（补充来源）</b>——17 场 CC 参与且涉及任务平台的腾讯会议逐字稿，存于 <code>腾讯会议 cc参与/</code>（含 <code>会议索引.md</code>）。按提供方要求暂标注为「开发者社区组织的工作会议」；每场在文末专节列出<b>参会人、会议主题、任务平台相关发言（逐字+行号）、所讨论的是任务平台哪个阶段</b>。</li>
-  </ol>
-  <b>不作为事实来源的材料：</b>参与者为自己陈述/辩解的材料及衍生观点文档——《关于任务系统2.0开发费用争议的事实说明_v3》《回应_给砚仁_2026-08-05》《砚仁视角_标准录音6-原文》《任务系统2.0开发费用争议-会议交叉核验报告》——<b>一律不作为本矩阵的事实依据</b>（仅列于文末备查）。<br>
-  <b>别名对照（事实）：</b>虹阳=野生蓝莓=弘扬/洪阳（谐音同一人）；刘兵=刘斌/斌哥/兵哥（投资人）；淑惠=和光同尘（iMeeting 显示名）；砚仁=他山之石（Snapshot 昵称）=苏砚仁=Yunbiao Yang（Notion 创建人）=他山之石斋（微信）；CC=乘月归（微信）；小白=xiaobai=577（微信）。
-</div>
 
 <div class="box" id="toc-sec-flow">
   <h2>第三章 责任流向：这笔费用从哪里开始，在哪里断掉</h2>
@@ -1583,6 +1605,10 @@ document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') close
   /* 选中文本后的浮动小按钮 */
   #cmFloatBtn{display:none;position:fixed;z-index:1001;padding:4px 10px;font-size:12px;border-radius:8px;border:1px solid #2e7d5b;background:#245f46;color:#fff;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.45);white-space:nowrap;font-family:inherit}
   #cmFloatBtn:hover{background:#2e7d5b}
+  /* 触屏设备：浮钮加大到可点尺寸（min-height 44px） */
+  @media (pointer:coarse){
+    #cmFloatBtn{min-height:44px;font-size:15px;padding:8px 16px;border-radius:10px}
+  }
   /* 评论输入弹窗 */
   #cmDialogMask{display:none;position:fixed;inset:0;background:rgba(5,8,15,.66);z-index:1002;padding:24px 12px;overflow:auto}
   #cmDialog{max-width:520px;margin:40px auto;background:var(--panel2,#1d2740);border:1px solid var(--line,#2b3a5c);border-radius:12px;padding:16px 18px;color:var(--txt,#e8edf7);font-size:13.5px}
@@ -1621,6 +1647,7 @@ document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') close
     #cmPanel{right:12px;left:12px;width:auto;bottom:60px;max-height:66vh}
     #cmToggle{right:12px;bottom:12px;padding:8px 14px;font-size:13px}
     #cmPop{max-width:calc(100vw - 32px)}
+    #cmDialog{max-width:calc(100vw - 24px)}
   }
 </style>
 <script>
@@ -1821,8 +1848,9 @@ document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') close
   /* ---------- 划词 → 浮动按钮 → 输入弹窗 ---------- */
   var pendingRange = null;
 
-  function onSelectEnd(){
+  function onSelectEnd(delay){
     setTimeout(function(){
+      if (dialogMask.style.display === 'block'){ hideFloat(); return; }  // 弹窗打开期间不再弹浮钮
       var sel = window.getSelection();
       if (!sel || sel.isCollapsed || sel.rangeCount === 0){ hideFloat(); return; }
       var text = normStr(sel.toString());
@@ -1840,17 +1868,35 @@ document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') close
       if (!rect){ hideFloat(); return; }
       pendingRange = range.cloneRange();
       floatBtn.style.display = 'block';
-      var top = rect.top - 40;
-      if (top < 6) top = rect.bottom + 8;
-      var left = Math.min(Math.max(6, rect.left), window.innerWidth - 130);
+      var coarse = false;
+      try{ coarse = window.matchMedia && window.matchMedia('(pointer:coarse)').matches; }catch(err3){}
+      var btnH = coarse ? 44 : 30;
+      var top;
+      if (coarse){
+        top = rect.bottom + 10;                                        // 触屏优先放选区下方，避开 iOS/微信系统选中菜单
+        if (top + btnH + 8 > window.innerHeight) top = rect.top - btnH - 10;  // 底部放不下则翻转到上方
+        if (top < 6) top = 6;
+      } else {
+        top = rect.top - 40;
+        if (top < 6) top = rect.bottom + 8;
+      }
+      var left = Math.min(Math.max(6, rect.left), window.innerWidth - (coarse ? 150 : 130));
       floatBtn.style.top = top + 'px';
       floatBtn.style.left = left + 'px';
-    }, 10);
+    }, delay == null ? 10 : delay);
   }
   function hideFloat(){ floatBtn.style.display = 'none'; }
 
-  // mousedown 阻止默认行为，避免点击按钮时选区被清掉
+  // mousedown/touchstart 阻止默认行为，避免点击按钮时选区被清掉；
+  // touchstart preventDefault 后系统不再派发兼容性 click，故 touchend 手动触发等效逻辑
   floatBtn.addEventListener('mousedown', function(e){ e.preventDefault(); });
+  floatBtn.addEventListener('touchstart', function(e){ e.preventDefault(); }, { passive:false });
+  floatBtn.addEventListener('touchend', function(e){
+    e.preventDefault();
+    if (!pendingRange){ hideFloat(); return; }
+    openDialog(pendingRange);
+    hideFloat();
+  });
   floatBtn.addEventListener('click', function(e){
     e.preventDefault(); e.stopPropagation();
     if (!pendingRange){ hideFloat(); return; }
@@ -2054,8 +2100,18 @@ document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') close
   });
 
   /* ---------- 全局事件（均限定在 cm 元素内，不影响页面已有 ev 弹窗逻辑） ---------- */
-  document.addEventListener('mouseup', onSelectEnd);
-  document.addEventListener('touchend', onSelectEnd, { passive:true });
+  document.addEventListener('mouseup', function(){ onSelectEnd(10); });
+  document.addEventListener('touchend', function(){ onSelectEnd(250); }, { passive:true });  // 真机选区提交较慢，touchend 路径延迟放大
+  /* 移动端主触发：选区变化防抖 300ms 后检查（解决 iOS/微信 WebView 在 touchend 时选区尚未提交的经典时序问题）；桌面行为不变 */
+  var cmSelTimer = null;
+  document.addEventListener('selectionchange', function(){
+    clearTimeout(cmSelTimer);
+    cmSelTimer = setTimeout(function(){
+      var sel = window.getSelection();
+      if (!sel || sel.isCollapsed || sel.rangeCount === 0){ hideFloat(); return; }
+      onSelectEnd(10);
+    }, 300);
+  });
   document.addEventListener('mousedown', function(e){
     if (e.target === floatBtn) return;
     if (!e.target.closest || !e.target.closest('.cm-ui')) hideFloat();
@@ -2104,6 +2160,16 @@ document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') close
   var mask = document.getElementById('tocMask');
   if (!nav || !fab || !mask) return;
   var links = Array.prototype.slice.call(nav.querySelectorAll('.toc-link'));
+  var chapBtns = Array.prototype.slice.call(nav.querySelectorAll('.toc-chapbtn'));
+
+  /* 章折叠/展开 */
+  chapBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var chap = btn.closest('.toc-chap');
+      var collapsed = chap.classList.toggle('toc-collapsed');
+      btn.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+    });
+  });
 
   function closeDrawer(){ nav.classList.remove('toc-open'); mask.classList.remove('toc-open'); }
   fab.addEventListener('click', function(){
@@ -2113,10 +2179,24 @@ document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') close
   mask.addEventListener('click', closeDrawer);
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeDrawer(); });
 
-  function setActive(id){
+  /* 双级高亮：小节精确高亮 + 所属章弱高亮；点击跳转到折叠章内小节时自动展开该章（被动滚动不改动用户的折叠选择） */
+  function setActive(id, expand){
     links.forEach(function(a){
       a.classList.toggle('toc-act', a.getAttribute('href') === '#' + id);
     });
+    chapBtns.forEach(function(b){ b.classList.remove('toc-act-chap'); });
+    var act = nav.querySelector('.toc-link.toc-act');
+    if (act){
+      var chap = act.closest('.toc-chap');
+      if (chap){
+        var btn = chap.querySelector('.toc-chapbtn');
+        btn.classList.add('toc-act-chap');
+        if (expand && chap.classList.contains('toc-collapsed')){
+          chap.classList.remove('toc-collapsed');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      }
+    }
   }
   links.forEach(function(a){
     a.addEventListener('click', function(e){
@@ -2125,20 +2205,34 @@ document.addEventListener('keydown', function(ev){ if(ev.key === 'Escape') close
       if (target){
         e.preventDefault();
         target.scrollIntoView({ behavior:'smooth', block:'start' });
-        setActive(id);
+        setActive(id, true);   // 点击跳转：展开所属折叠章
         try{ history.replaceState(null, '', '#' + id); }catch(err){}
       }
       closeDrawer();   // 手机端点项后自动收起
     });
   });
-  /* 当前小节随滚动高亮 */
-  if ('IntersectionObserver' in window){
-    var secs = links.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); }).filter(Boolean);
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){ if (en.isIntersecting) setActive(en.target.id); });
-    }, { rootMargin:'-15% 0px -70% 0px', threshold:0 });
-    secs.forEach(function(s){ io.observe(s); });
+  /* 当前小节随滚动高亮（滚动 spy：取顶部越过视口 25% 线的最后一个小节；rAF 节流）
+     注意：secs 必须按文档顺序排序（目录显示顺序≠文档物理顺序，如 1.3 资料来源在第二章之后） */
+  var secs = links.map(function(a){ return document.getElementById(a.getAttribute('href').slice(1)); }).filter(Boolean);
+  secs.sort(function(a, b){
+    return (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1;
+  });
+  var tocTicking = false;
+  function tocSpy(){
+    if (!secs.length) return;
+    var mark = window.innerHeight * 0.25;
+    var current = null;
+    for (var i = 0; i < secs.length; i++){
+      if (secs[i].getBoundingClientRect().top <= mark) current = secs[i]; else break;
+    }
+    if (current) setActive(current.id);
   }
+  window.addEventListener('scroll', function(){
+    if (tocTicking) return;
+    tocTicking = true;
+    (window.requestAnimationFrame || function(f){ setTimeout(f, 50); })(function(){ tocTicking = false; tocSpy(); });
+  }, { passive:true });
+  tocSpy();  // 初始高亮
 })();
 </script>
 
